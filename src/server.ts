@@ -1,9 +1,11 @@
 import * as http from "http";
 import * as morgan from 'morgan';
 import * as express from 'express';
-import * as Sequelize from 'sequelize';
 import * as bodyParser from 'body-parser';
 import { Express, Request, Response } from "express";
+
+//import routers
+import { userRouter } from './routers/UserRouter';
 
 class Server {
     private _app: Express;
@@ -25,14 +27,20 @@ class Server {
     }
 
     private _routes(): void {
-        //Just for checking the server
+        //Routes Setup
+
+        //Server Check
         this._app.use("/", express.Router().get('/', (req, res, next) => {
-            res.json("Hello World uemail server has started!");
+            res.json("Uemail server has started successfully");
         }));
+
+        //User Rotuer
+        this._app.use('/users', userRouter);
     }
 
     private _onError(error: any): void {
         console.log(error);
+        throw error;
     }
 
     private _onListening(): void {

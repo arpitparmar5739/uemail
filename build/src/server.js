@@ -4,6 +4,8 @@ const http = require("http");
 const morgan = require("morgan");
 const express = require("express");
 const bodyParser = require("body-parser");
+//import routers
+const UserRouter_1 = require("./routers/UserRouter");
 class Server {
     constructor() {
         this._app = express();
@@ -19,13 +21,17 @@ class Server {
         this._server = http.createServer(this._app);
     }
     _routes() {
-        //Just for checking the server
+        //Routes Setup
+        //Server Check
         this._app.use("/", express.Router().get('/', (req, res, next) => {
-            res.json("Hello World uemail server has started!");
+            res.json("Uemail server has started successfully");
         }));
+        //User Rotuer
+        this._app.use('/users', UserRouter_1.userRouter);
     }
     _onError(error) {
         console.log(error);
+        throw error;
     }
     _onListening() {
         let address = this._server.address();
