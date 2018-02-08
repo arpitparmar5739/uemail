@@ -1,31 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function default_1(sequelize, dataTypes) {
-    let User = sequelize.define("User", {
+    let EmailRecipient = sequelize.define("EmailRecipient", {
         id: {
             type: dataTypes.INTEGER,
-            primaryKey: true,
             autoIncrement: true,
-            allowNull: false
-        },
-        email: {
-            type: dataTypes.STRING,
             allowNull: false,
-            unique: true
+            primaryKey: true
         },
-        password: {
+        recipient: {
             type: dataTypes.STRING,
             allowNull: false
         },
-        firstname: {
-            type: dataTypes.STRING,
+        email_id: {
+            type: dataTypes.INTEGER,
             allowNull: false
         },
-        lastname: {
+        recipient_type: {
             type: dataTypes.STRING,
             allowNull: false
         }
     });
-    return User;
+    return EmailRecipient;
 }
 exports.default = default_1;
