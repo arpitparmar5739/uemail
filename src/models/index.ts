@@ -4,10 +4,19 @@ import * as SequelizeStatic from "sequelize";
 
 import { Sequelize, Model } from "sequelize";
 import { configs } from "../../configs/Configs";
-import { UserAttributes, UserInstance } from "../models/interfaces/UserInterface";
+
+import { UserAttributes, UserInstance } from "./interfaces/UserInterface";
+import { EmailAttributes, EmailInstance } from "./interfaces/EmailInterface";
+import { AttachmentAttributes, AttachmentInstance } from "./interfaces/AttachmentsInterface";
+import { LoginSessionAttributes, LoginSessionInstance } from "./interfaces/LoginSessionInterface";
+import { EmailRecipientAttributes, EmailRecipientInstance } from "./interfaces/EmailRecipientInterface";
 
 export interface SequelizeModels {
     User: SequelizeStatic.Model<UserInstance, UserAttributes>;
+    Email: SequelizeStatic.Model<EmailInstance, EmailAttributes>;
+    Attachment: SequelizeStatic.Model<AttachmentInstance, AttachmentAttributes>;
+    LoginSession: SequelizeStatic.Model<LoginSessionInstance, LoginSessionAttributes>;
+    EmailRecipient: SequelizeStatic.Model<EmailRecipientInstance, EmailRecipientAttributes>;
 }
 
 class Database {
@@ -26,7 +35,7 @@ class Database {
         }).catch((error: Error) => {
             console.log("Could not connect to the database!\n" + error);
         });
-        
+
         this._models = ({} as any);
 
         fs.readdirSync(__dirname).filter((file: string) => {
@@ -43,7 +52,14 @@ class Database {
         });
     }
 
+    private _setAssociations(): void {
+        this._models.Attachment.belongsTo(this._models.Email);
+        this._models.EmailRecipient.belongsTo(this._models.User);
+        this._models.LoginSession.belongsTo(this._models.User);
+    }
+
     getModels(): SequelizeModels {
+        this._setAssociations();
         return this._models;
     }
 

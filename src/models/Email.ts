@@ -1,5 +1,5 @@
 import * as SequelizeStatic from 'sequelize';
-import { DataTypes, Sequelize } from 'sequelize';
+import { Sequelize, DataTypes } from 'sequelize';
 import { EmailInstance, EmailAttributes } from './interfaces/EmailInterface';
 
 export default function (sequelize: Sequelize, dataTypes: DataTypes):
@@ -47,6 +47,6 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes):
             allowNull: false,
             defaultValue: "primary"
         }
-    });
+    }, { underscored: true });
     return Email;
 }

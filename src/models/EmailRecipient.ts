@@ -13,18 +13,10 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes):
                 allowNull: false,
                 primaryKey: true
             },
-            recipient: {
-                type: dataTypes.STRING,
-                allowNull: false
-            },
-            email_id: {
-                type: dataTypes.INTEGER,
-                allowNull: false
-            },
             recipient_type: {
                 type: dataTypes.STRING,
                 allowNull: false
             }
-        });
+        }, { underscored: true });
     return EmailRecipient;
 }

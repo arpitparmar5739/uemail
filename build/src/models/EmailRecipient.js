@@ -8,19 +8,11 @@ function default_1(sequelize, dataTypes) {
             allowNull: false,
             primaryKey: true
         },
-        recipient: {
-            type: dataTypes.STRING,
-            allowNull: false
-        },
-        email_id: {
-            type: dataTypes.INTEGER,
-            allowNull: false
-        },
         recipient_type: {
             type: dataTypes.STRING,
             allowNull: false
         }
-    });
+    }, { underscored: true });
     return EmailRecipient;
 }
 exports.default = default_1;

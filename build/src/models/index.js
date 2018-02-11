@@ -27,7 +27,13 @@ class Database {
             }
         });
     }
+    _setAssociations() {
+        this._models.Attachment.belongsTo(this._models.Email);
+        this._models.EmailRecipient.belongsTo(this._models.User);
+        this._models.LoginSession.belongsTo(this._models.User);
+    }
     getModels() {
+        this._setAssociations();
         return this._models;
     }
     getSequelize() {

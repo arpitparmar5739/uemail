@@ -1,6 +1,9 @@
 import server from './server';
-import {configs} from '../configs/Configs';
-import {sequelize} from './models/index';
+import { configs } from '../configs/Configs';
+import { sequelize, models } from './models/index';
+
+
+models.Attachment.belongsTo(models.Email);
 
 sequelize.sync()
     .then(() => {

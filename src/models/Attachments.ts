@@ -12,14 +12,10 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes):
                 autoIncrement: true,
                 allowNull: false
             },
-            email_id: {
-                type: dataTypes.INTEGER,
-                allowNull: false
-            },
             attachment_addr: {
                 type: dataTypes.TEXT,
                 allowNull: false
             }
-        });
+        }, { underscored: true });
     return Attachment;
 }

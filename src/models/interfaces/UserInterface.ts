@@ -1,7 +1,8 @@
 import { Instance } from 'sequelize';
 
 export interface UserAttributes {
-    email: string,
+    id: number,
+    username: string,
     password: string,
     firstname: string,
     lastname: string

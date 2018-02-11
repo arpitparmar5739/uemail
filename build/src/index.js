@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = require("./server");
 const Configs_1 = require("../configs/Configs");
 const index_1 = require("./models/index");
+index_1.models.Attachment.belongsTo(index_1.models.Email);
 index_1.sequelize.sync()
     .then(() => {
     const port = Configs_1.configs.getServerConfig().port;

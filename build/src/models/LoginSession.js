@@ -1,18 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function default_1(sequelize, dataTypes) {
-    let Attachment = sequelize.define("Attachment", {
+    let LoginSession = sequelize.define("LoginSession", {
         id: {
             type: dataTypes.INTEGER,
-            primaryKey: true,
             autoIncrement: true,
-            allowNull: false
-        },
-        attachment_addr: {
-            type: dataTypes.TEXT,
+            primaryKey: true,
             allowNull: false
         }
     }, { underscored: true });
-    return Attachment;
+    return LoginSession;
 }
 exports.default = default_1;

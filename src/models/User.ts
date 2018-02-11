@@ -8,10 +8,10 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes):
         id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true,
-            allowNull: false
+            allowNull: false,
+            autoIncrement: true
         },
-        email: {
+        username: {
             type: dataTypes.STRING,
             allowNull: false,
             unique: true
@@ -28,6 +28,6 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes):
             type: dataTypes.STRING,
             allowNull: false
         }
-    });
+    }, { underscored: true });
     return User;
 }

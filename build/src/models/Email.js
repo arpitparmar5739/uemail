@@ -44,7 +44,7 @@ function default_1(sequelize, dataTypes) {
             allowNull: false,
             defaultValue: "primary"
         }
-    });
+    }, { underscored: true });
     return Email;
 }
 exports.default = default_1;
