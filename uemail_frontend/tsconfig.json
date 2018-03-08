@@ -54,8 +54,7 @@
   },
   "include": [
     "./src/**/*",
-    "tools/**/*",
-    "webpack.config.dev.ts"
+    "tools/**/*"
   ],
   "exclude": [
     "node_modules",

@@ -1,7 +1,8 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
 
-const config: webpack.Configuration = {
+const config = {
+  mode: 'development',
   devtool: 'source-map',
   entry: [
     'webpack-hot-middleware/client?reload=true',
@@ -9,7 +10,12 @@ const config: webpack.Configuration = {
   ],
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: 'ts-loader' }
+      {test: /\.tsx?$/, include: path.join(__dirname, 'src'), loader: 'ts-loader'},
+      {test: /(\.css)$/, loaders: ['style-loader', 'css-loader']},
+      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'},
+      {test: /\.(woff|woff2)$/, loader: 'url-loader?prefix=font/&limit=5000'},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream'},
+      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml'}
     ]
   },
   output: {

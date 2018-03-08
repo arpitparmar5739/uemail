@@ -1,20 +1,21 @@
 import * as React from 'react';
+import { RouteComponentProps } from 'react-router';
 
-export interface HomePageProps {
-    name: string;
-    surname: string;
+interface HomePageProps {
+  url: string;
 }
 
-class HomePage extends React.Component<HomePageProps, object> {
-    public render() {
-        const {name, surname} = this.props;
+interface HomePageState {
+}
 
-        return (
-            <div className={'HomePage'}>
-                Hello {name + ' ' + surname}!
-            </div>
-        );
-    }
+class HomePage extends React.Component<HomePageProps & RouteComponentProps<{}>, HomePageState> {
+  public render() {
+    return (
+      <div className={'HomePage'}>
+        Pathname = {this.props.location.pathname}
+      </div>
+    );
+  }
 }
 
 export default HomePage;
