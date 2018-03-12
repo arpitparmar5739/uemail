@@ -8,7 +8,7 @@ import webpack_hot_middleware = require('webpack-hot-middleware');
 
 import open = require('open');
 
-const port: number = 3000;
+const port: number = 8080;
 const app = express();
 const compiler = webpack(config as webpack.Configuration);
 

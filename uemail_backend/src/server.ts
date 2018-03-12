@@ -31,7 +31,7 @@ class Server {
         //Routes Setup
 
         //Server Check
-        this._app.use("/", express.Router().get('/', (req, res, next) => {
+        this._app.use("/", express.Router().get('/', (req, res) => {
             res.json("Uemail server has started successfully");
         }));
 

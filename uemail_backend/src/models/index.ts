@@ -36,7 +36,7 @@ class Database {
             console.log("Could not connect to the database!\n" + error);
         });
 
-        this._models = ({} as any);
+        this._models = ({} as SequelizeModels);
 
         fs.readdirSync(__dirname).filter((file: string) => {
             return (file !== this._basename) && (file !== "interfaces");

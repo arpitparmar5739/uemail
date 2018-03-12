@@ -26,6 +26,7 @@ class Database {
                 this._models[modelName].associate(this._models);
             }
         });
+        // Right now config is for creating associations only.
         this._config();
     }
     _config() {

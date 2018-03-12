@@ -1,6 +1,6 @@
 import server from './server';
 import { configs } from '../configs/Configs';
-import { sequelize, models } from './models/index';
+import { sequelize } from './models/index';
 
 sequelize.sync()
     .then(() => {
