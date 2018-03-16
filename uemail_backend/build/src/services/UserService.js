@@ -4,10 +4,13 @@ const index_1 = require("../models/index");
 class UserService {
     createUser(userAttributes) {
         let promise = new Promise((resolve, reject) => {
-            index_1.sequelize.transaction((t) => {
-                return index_1.models.User.create(userAttributes).then((userInstance) => {
+            index_1.sequelize.transaction(() => {
+                return index_1.models.User
+                    .create(userAttributes)
+                    .then((userInstance) => {
                     resolve(userInstance);
-                }).catch((error) => {
+                })
+                    .catch((error) => {
                     reject(error);
                 });
             });
@@ -26,12 +29,11 @@ class UserService {
         });
         return promise;
     }
-    retrieveUser(username, password) {
-        let promise = new Promise((resolve, reject) => {
+    retrieveUser(username, password = '') {
+        return new Promise((resolve, reject) => {
             index_1.sequelize.transaction((t) => {
-                //TODO: Add type in the user argument in .then((user))
                 return index_1.models.User.findOne({
-                    where: { username: username, password: password }
+                    where: { username: username }
                 }).then((user) => {
                     resolve(user);
                 }).catch((error) => {
@@ -39,7 +41,28 @@ class UserService {
                 });
             });
         });
-        return promise;
+    }
+    userIsPresent(username) {
+        return new Promise((resolve) => {
+            index_1.models.User.count({ where: { username: username } })
+                .then((userCount) => {
+                resolve(userCount > 0);
+            })
+                .catch(() => {
+                resolve(true);
+            });
+        });
+    }
+    emailIsPresent(email) {
+        return new Promise((resolve) => {
+            index_1.models.User.count({ where: { email: email } })
+                .then((userCount) => {
+                resolve(userCount > 0);
+            })
+                .catch(() => {
+                resolve(true);
+            });
+        });
     }
 }
 exports.UserService = UserService;

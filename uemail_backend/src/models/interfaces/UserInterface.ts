@@ -1,13 +1,15 @@
-import { Instance } from 'sequelize';
+import {Instance} from 'sequelize';
 
 export interface UserAttributes {
-    id: number,
-    username: string,
-    password: string,
-    firstname: string,
-    lastname: string
+  id: number,
+  username: string,
+  email: string,
+  password: string,
+  firstname: string,
+  lastname: string,
+  phone: string
 }
 
 export interface UserInstance extends Instance<UserAttributes> {
-    dataValues: UserAttributes
+  dataValues: UserAttributes
 }

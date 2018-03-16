@@ -1,0 +1,89 @@
+import * as React from 'react';
+import {Button, ButtonGroup, FormControl, FormGroup} from 'react-bootstrap';
+import {FormEvent} from 'react';
+
+interface LoginProps {
+}
+
+interface LoginState {
+  username: string;
+  password: string;
+}
+
+class Login extends React.Component<LoginProps, LoginState> {
+  constructor(props: LoginProps) {
+    super(props);
+
+    this.state = {
+      username: '',
+      password: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.submit = this.submit.bind(this);
+  }
+
+  getValidationState() {
+    const length = this.state.username.length;
+    if (length > 4) {
+      return 'success';
+    } else if (length > 5) {
+      return 'warning';
+    } else if (length > 0) {
+      return 'error';
+    }
+    return null;
+  }
+
+  handleChange(e: FormEvent<FormControl>): void {
+    if ((e.target as HTMLInputElement).name === 'username') {
+      this.setState({
+        username: (e.target as HTMLInputElement).value
+      });
+    } else if ((e.target as HTMLInputElement).name === 'password') {
+      this.setState({
+        password: (e.target as HTMLInputElement).value
+      });
+    } else {
+      // TODO: Do something here!
+    }
+  }
+
+  submit(e: FormEvent<FormControl>): void {
+    alert(this.state.username + ' ' + this.state.password);
+  }
+
+  public render() {
+    return (
+      <div>
+        <form>
+          <FormGroup controlId="username" validationState={this.getValidationState()}>
+            <FormControl
+              name="username"
+              type="text"
+              value={this.state.username}
+              placeholder="Username"
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+
+          <FormGroup controlId="password" validationState={this.getValidationState()}>
+            <FormControl
+              name="password"
+              type="password"
+              value={this.state.password}
+              placeholder="Password"
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+
+          <ButtonGroup>
+            <Button onClick={this.submit}>Submit</Button>
+          </ButtonGroup>
+        </form>
+      </div>
+    );
+  }
+}
+
+export default Login;

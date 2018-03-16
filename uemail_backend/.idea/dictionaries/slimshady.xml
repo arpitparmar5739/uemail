@@ -1,6 +1,8 @@
 <component name="ProjectDictionaryState">
   <dictionary name="slimshady">
     <words>
+      <w>firstname</w>
+      <w>lastname</w>
       <w>sequelize</w>
     </words>
   </dictionary>

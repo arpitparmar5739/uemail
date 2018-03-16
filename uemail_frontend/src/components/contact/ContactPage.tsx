@@ -1,8 +1,10 @@
 import * as React from 'react';
 
-interface ContactPageProps {}
+interface ContactPageProps {
+}
 
-interface ContactPageState {}
+interface ContactPageState {
+}
 
 class ContactPage extends React.Component<ContactPageProps, ContactPageState> {
   constructor(props: ContactPageProps) {

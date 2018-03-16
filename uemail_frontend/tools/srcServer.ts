@@ -24,7 +24,7 @@ app.get('*', (req: express.Request, res: express.Response) => {
 
 /* tslint:disable */
 
-app.listen(port, function(err: Error) {
+app.listen(port, function (err: Error) {
   if (err) {
     console.log(err);
   } else {

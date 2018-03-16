@@ -1,26 +1,89 @@
-import { userService } from '../services/UserService';
-import { UserInstance } from '../models/interfaces/UserInterface';
-import { Request, Response, Router } from 'express';
+import {userService} from '../services/UserService';
+import {UserInstance} from '../models/interfaces/UserInterface';
+import {Request, Response, Router} from 'express';
 
-class SignupRouter {
-    public router: Router;
+function validateUser(req: Request): Promise<boolean> {
+  return new Promise<boolean>((resolve: Function) => {
+    userService.userIsPresent(req.body.username)
+      .then((userIsPresent) => {
+        if (!userIsPresent) {
+          userService.emailIsPresent(req.body.email)
+            .then((emailIsPresent) => {
+              if (!emailIsPresent) {
+                req.check('username', 'Username can not be empty.').exists().trim().not().isEmpty();
+                req.check('username', 'Invalid Username').isAlphanumeric();
+                req.check('email', 'Invalid Email').trim().isEmail();
+                req.check('password', 'Invalid Password')
+                  .trim().isLength({min: 6});
+                req.check('password', 'Passwords does not match!')
+                  .equals(req.body.confirmPassword);
+                req.check('firstname', 'Invalid First Name')
+                  .trim().not().isEmpty();
+                req.check('firstname', 'Invalid First Name').isAlpha();
+                req.check('lastname', 'Invalid Last Name')
+                  .trim().isLength({min: 1}).isAlpha();
+                req.check('phone', 'Invalid Phone Number')
+                  .trim().isLength({min: 10, max: 10}).isNumeric();
+              }
 
-    constructor() {
-        this.router = Router();
-        this._routes();
-    }
+              if (emailIsPresent) {
+                req.check('email', 'Email already exists')
+                  .not().equals(req.body.email);
+              }
+              resolve(!req.validationErrors());
+            });
 
-    public createUser(req: Request, res: Response): void {
-        userService.createUser(req.body).then((user: UserInstance) => {
-            return res.json(user);
-        }).catch((error: Error) => {
-            return res.json(error);
-        });
-    }
-
-    private _routes(): void {
-        this.router.post("/", this.createUser);
-    }
+        } else {
+          req.check('username', 'Username already exists')
+            .not().equals(req.body.username);
+          resolve(!req.validationErrors());
+        }
+      });
+  });
 }
 
-export const signupRouter = new SignupRouter().router;
+class SignupRouter {
+  public router: Router;
+
+  constructor() {
+    this.router = Router();
+    this._routes();
+  }
+
+  public createUser(req: Request, res: Response): void {
+    validateUser(req).then((validation) => {
+      if (validation) {
+        userService.createUser(req.body)
+          .then((user: UserInstance) => {
+            if (!!user) {
+              const message: string = "Signup successful";
+              return res.json({
+                "status": 200,
+                "message": message
+              });
+            }
+          })
+          .catch((error) => {
+            return res.status(422).send({
+              "status": 422,
+              "message": error.message
+            });
+          });
+      }
+      else {
+        let errors = req.validationErrors();
+        res.status(422).json({
+          "status": 422,
+          "message": errors
+        });
+      }
+    });
+  }
+
+  private _routes(): void {
+    this.router.post("/", this.createUser);
+  }
+}
+
+export const
+  signupRouter = new SignupRouter().router;

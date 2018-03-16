@@ -29,16 +29,16 @@ class Database {
         // Right now config is for creating associations only.
         this._config();
     }
-    _config() {
-        this._models.Attachment.belongsTo(this._models.Email);
-        this._models.EmailRecipient.belongsTo(this._models.User);
-        this._models.LoginSession.belongsTo(this._models.User);
-    }
     getModels() {
         return this._models;
     }
     getSequelize() {
         return this._sequelize;
+    }
+    _config() {
+        this._models.Attachment.belongsTo(this._models.Email);
+        this._models.EmailRecipient.belongsTo(this._models.User);
+        this._models.LoginSession.belongsTo(this._models.User);
     }
 }
 const database = new Database();

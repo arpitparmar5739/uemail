@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
+import {RouteComponentProps} from 'react-router';
 
 interface HomePageProps {
   url: string;

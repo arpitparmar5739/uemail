@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
-import { Col, SelectCallback, Tab, Tabs, Thumbnail } from 'react-bootstrap';
+import {RouteComponentProps} from 'react-router';
+import {Col, SelectCallback, Tab, Tabs, Thumbnail} from 'react-bootstrap';
 
-import Login from '../common/login/Login';
-import Signup from '../common/signup/Signup';
+import Login from '../login/Login';
+import Signup from '../signup/Signup';
 
 import './WelcomePage.css';
 

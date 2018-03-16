@@ -2,60 +2,80 @@ import * as http from "http";
 import * as morgan from 'morgan';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import { Express, Request, Response } from "express";
+import * as expressValidator from 'express-validator';
+import {Express, Request, Response} from "express";
 
 //import routers
-import { loginRouter } from './routers/LoginRouter';
-import { signupRouter } from './routers/SignupRouter';
+import {loginRouter} from './routers/LoginRouter';
+import {signupRouter} from './routers/SignupRouter';
+import {userRouter} from "./routers/UserRouter";
+
+//import service
+import {userService} from "./services/UserService";
 
 class Server {
-    private _app: Express;
-    private _server: http.Server;
+  private _app: Express;
+  private _server: http.Server;
 
-    constructor() {
-        this._app = express();
-        this._app.use(bodyParser.json());
-        this._app.use(morgan("dev"));
-        this._app.use((error: Error, req: Request, res: Response, next: Function) => {
-            if (error) {
-                res.status(400).send(error);
-            }
-        });
+  constructor() {
+    this._app = express();
+    this._app.use(bodyParser.json());
+    this._app.use(expressValidator({
+      customValidators: {
+        arpitCustomFunction: function (value) {
+          return false;
+        }
+      }
+    }));
+    this._app.use(morgan("dev"));
+    this._app.use((error: Error, req: Request, res: Response, next: Function) => {
+      if (error) {
+        res.status(400).send(error);
+      }
+    });
 
-        //setup routes
-        this._routes();
-        this._server = http.createServer(this._app);
-    }
+    //Access control allow origin
+    this._app.use(function (req, res, next) {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+    });
 
-    private _routes(): void {
-        //Routes Setup
+    //setup routes
+    this._routes();
+    this._server = http.createServer(this._app);
+  }
 
-        //Server Check
-        this._app.use("/", express.Router().get('/', (req, res) => {
-            res.json("Uemail server has started successfully");
-        }));
+  start(port: number): void {
+    this._server.listen(port);
+    this._server.on("error", error => this._onError(error));
+    this._server.on("listening", () => this._onListening());
+  }
 
-        //User Rotuer
-        this._app.use('/login', loginRouter);
-        this._app.use('/signup', signupRouter);
-    }
+  private _routes(): void {
+    //Routes Setup
 
-    private _onError(error: any): void {
-        console.log(error);
-        throw error;
-    }
+    //Server Check
+    this._app.use("/", express.Router().get('/', (req, res) => {
+      res.json("Uemail server has started successfully");
+    }));
 
-    private _onListening(): void {
-        let address = this._server.address();
-        let bind = `port ${address.port}`;
-        console.log(`Listening on ${bind}.`);
-    };
+    //User Rotuer
+    this._app.use('/users', userRouter);
+    this._app.use('/login', loginRouter);
+    this._app.use('/signup', signupRouter);
+  }
 
-    start(port: number): void {
-        this._server.listen(port);
-        this._server.on("error", error => this._onError(error));
-        this._server.on("listening", () => this._onListening());
-    }
+  private _onError(error: any): void {
+    console.log(error);
+    throw error;
+  }
+
+  private _onListening(): void {
+    let address = this._server.address();
+    let bind = `port ${address.port}`;
+    console.log(`Listening on ${bind}.`);
+  };
 }
 
 export default new Server();

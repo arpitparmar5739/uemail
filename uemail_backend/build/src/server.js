@@ -4,22 +4,42 @@ const http = require("http");
 const morgan = require("morgan");
 const express = require("express");
 const bodyParser = require("body-parser");
+const expressValidator = require("express-validator");
 //import routers
 const LoginRouter_1 = require("./routers/LoginRouter");
 const SignupRouter_1 = require("./routers/SignupRouter");
+const UserRouter_1 = require("./routers/UserRouter");
 class Server {
     constructor() {
         this._app = express();
         this._app.use(bodyParser.json());
+        this._app.use(expressValidator({
+            customValidators: {
+                arpitCustomFunction: function (value) {
+                    return false;
+                }
+            }
+        }));
         this._app.use(morgan("dev"));
         this._app.use((error, req, res, next) => {
             if (error) {
                 res.status(400).send(error);
             }
         });
+        //Access control allow origin
+        this._app.use(function (req, res, next) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        });
         //setup routes
         this._routes();
         this._server = http.createServer(this._app);
+    }
+    start(port) {
+        this._server.listen(port);
+        this._server.on("error", error => this._onError(error));
+        this._server.on("listening", () => this._onListening());
     }
     _routes() {
         //Routes Setup
@@ -28,6 +48,7 @@ class Server {
             res.json("Uemail server has started successfully");
         }));
         //User Rotuer
+        this._app.use('/users', UserRouter_1.userRouter);
         this._app.use('/login', LoginRouter_1.loginRouter);
         this._app.use('/signup', SignupRouter_1.signupRouter);
     }
@@ -41,10 +62,5 @@ class Server {
         console.log(`Listening on ${bind}.`);
     }
     ;
-    start(port) {
-        this._server.listen(port);
-        this._server.on("error", error => this._onError(error));
-        this._server.on("listening", () => this._onListening());
-    }
 }
 exports.default = new Server();
