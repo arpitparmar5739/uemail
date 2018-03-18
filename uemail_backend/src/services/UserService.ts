@@ -33,7 +33,7 @@ export class UserService {
     return promise;
   }
 
-  retrieveUser(username: string, password: string = ''): Promise<UserInstance> {
+  retrieveUser(username: string): Promise<UserInstance> {
     return new Promise<UserInstance>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
         return models.User.findOne({

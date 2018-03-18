@@ -29,7 +29,7 @@ class UserService {
         });
         return promise;
     }
-    retrieveUser(username, password = '') {
+    retrieveUser(username) {
         return new Promise((resolve, reject) => {
             index_1.sequelize.transaction((t) => {
                 return index_1.models.User.findOne({

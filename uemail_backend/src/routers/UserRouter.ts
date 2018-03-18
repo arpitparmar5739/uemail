@@ -21,7 +21,7 @@ class UserRouter {
   public getUser(req: Request, res: Response): void {
     let username: string = req.body.username;
     let password: string = req.body.password;
-    userService.retrieveUser(username, password).then((user: UserInstance) => {
+    userService.retrieveUser(username).then((user: UserInstance) => {
       if (!!user) {
         return res.json(user);
       } else {

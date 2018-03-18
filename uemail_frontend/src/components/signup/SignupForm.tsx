@@ -24,19 +24,26 @@ export interface SignupFormProps {
     [key: string]: string
   };
 
-  message: string;
+  message: {
+    error: string,
+    success: string
+  };
 
   onChange (e: FormEvent<FormControl>): void;
 
   onSubmit(): void;
 
-  getValidationState(): 'success' | 'warning' | 'error' | null;
+  getValidationState(field: string): 'success' | 'warning' | 'error' | null;
 }
 
 export default function SignupForm(props: SignupFormProps) {
   return (
     <form>
-      <FormGroup controlId="username_signup" validationState={props.getValidationState()}>
+      <FormGroup controlId="username_signup" validationState={props.getValidationState('username')}>
+        <HelpBlock>
+          <p className="text-danger text-center">{props.message.error}</p>
+          <p className="text-success text-center">{props.message.success}</p>
+        </HelpBlock>
         <FormControl
           name="username"
           type="text"
@@ -47,10 +54,9 @@ export default function SignupForm(props: SignupFormProps) {
         <HelpBlock>
           <p className="text-danger">{props.errors.username}</p>
         </HelpBlock>
-        <FormControl.Feedback/>
       </FormGroup>
 
-      <FormGroup controlId="email" validationState={props.getValidationState()}>
+      <FormGroup controlId="email" validationState={props.getValidationState('email')}>
         <FormControl
           name="email"
           type="text"
@@ -63,7 +69,7 @@ export default function SignupForm(props: SignupFormProps) {
         </HelpBlock>
       </FormGroup>
 
-      <FormGroup controlId="password_signup" validationState={props.getValidationState()}>
+      <FormGroup controlId="password_signup" validationState={props.getValidationState('password')}>
         <FormControl
           name="password"
           type="password"
@@ -76,7 +82,7 @@ export default function SignupForm(props: SignupFormProps) {
         </HelpBlock>
       </FormGroup>
 
-      <FormGroup controlId="confirm_password_signup" validationState={props.getValidationState()}>
+      <FormGroup controlId="confirm_password_signup" validationState={props.getValidationState('confirmPassword')}>
         <FormControl
           name="confirmPassword"
           type="password"
@@ -89,7 +95,7 @@ export default function SignupForm(props: SignupFormProps) {
         </HelpBlock>
       </FormGroup>
 
-      <FormGroup controlId="firstname" validationState={props.getValidationState()}>
+      <FormGroup controlId="firstname" validationState={props.getValidationState('firstname')}>
         <FormControl
           name="firstname"
           type="text"
@@ -102,7 +108,7 @@ export default function SignupForm(props: SignupFormProps) {
         </HelpBlock>
       </FormGroup>
 
-      <FormGroup controlId="lastname" validationState={props.getValidationState()}>
+      <FormGroup controlId="lastname" validationState={props.getValidationState('lastname')}>
         <FormControl
           name="lastname"
           type="text"
@@ -115,7 +121,7 @@ export default function SignupForm(props: SignupFormProps) {
         </HelpBlock>
       </FormGroup>
 
-      <FormGroup controlId="phone" validationState={props.getValidationState()}>
+      <FormGroup controlId="phone" validationState={props.getValidationState('phone')}>
         <FormControl
           name="phone"
           type="text"
@@ -126,7 +132,6 @@ export default function SignupForm(props: SignupFormProps) {
         <HelpBlock>
           <p className="text-danger">{props.errors.phone}</p>
         </HelpBlock>
-        <FormControl.Feedback/>
       </FormGroup>
 
       <ButtonGroup>

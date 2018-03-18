@@ -4,7 +4,6 @@ import {FormEvent} from 'react';
 import {FormControl} from 'react-bootstrap';
 
 import SignupForm from './SignupForm';
-import {type} from 'os';
 import {isArray} from 'util';
 
 interface SignupProps {
@@ -18,7 +17,7 @@ interface SignupState {
     confirmPassword: string,
     firstname: string,
     lastname: string,
-    phone: string
+    phone: string,
     [key: string]: string
   };
   errors: {
@@ -31,10 +30,39 @@ interface SignupState {
     phone: string
     [key: string]: string
   };
-  message: string;
+  message: {
+    error: string,
+    success: string
+  };
 }
 
 class Signup extends React.Component<SignupProps, SignupState> {
+  submitFlag: boolean = true;
+  initialState: SignupState = {
+    user: {
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      firstname: '',
+      lastname: '',
+      phone: ''
+    },
+    errors: {
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      firstname: '',
+      lastname: '',
+      phone: ''
+    },
+    message: {
+      error: '',
+      success: ''
+    }
+  };
+
   constructor(props: SignupProps) {
     super(props);
 
@@ -42,27 +70,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
     this.handleChange = this.handleChange.bind(this);
     this.getValidationState = this.getValidationState.bind(this);
 
-    this.state = {
-      user: {
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        firstname: '',
-        lastname: '',
-        phone: ''
-      },
-      errors: {
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        firstname: '',
-        lastname: '',
-        phone: ''
-      },
-      message: ''
-    };
+    this.state = this.initialState;
   }
 
   handleChange(e: FormEvent<FormControl>) {
@@ -71,51 +79,120 @@ class Signup extends React.Component<SignupProps, SignupState> {
     this.setState({user: this.state.user});
   }
 
+  resetForm() {
+    this.submitFlag = true;
+    for (let key of Object.keys(this.state.user)) {
+      this.state.user[key] = '';
+    }
+    this.state.message.error = '';
+    this.state.message.success = '';
+    this.setState({
+      user: this.initialState.user,
+      errors: this.initialState.errors,
+      message: this.initialState.message
+    });
+  }
+
   submit() {
+    this.submitFlag = false;
+    for (let key of Object.keys(this.state.user)) {
+      if (this.state.errors[key].length > 0 || this.state.user[key].length === 0) {
+        this.state.message.error = 'Please fill the form correctly!';
+        this.setState({message: this.state.message});
+        return;
+      }
+    }
+
     axios.post('http://localhost:3000/signup', this.state.user)
-      .then((response) => {
-        /* tslint:disable */
-        this.setState({
-          message: response.data.message
-        });
+      .then(() => {
+        let username = this.state.user.username;
+        this.resetForm();
+        this.state.message.success = (
+          'Signup is successful you can now login with ' + username + ' username!'
+        );
+        this.setState({message: this.state.message});
       })
       .catch((error) => {
         if (error.response) {
           if (!!error.response.data.message && isArray(error.response.data.message)) {
-            let errors: any = {};
-            for (let message of error.response.data.message) {
-              errors[message.param] = message.msg;
-            }
-            this.setState({
-              errors: errors
-            });
+            this.state.message.error = 'Error: ' + error.response.data.message.map((message) => {
+              return message.msg;
+            }).join(',');
+            this.setState({message: this.state.message});
           } else {
-            this.setState({
-              message: error.response.data.message
-            });
+            this.state.message.error = error.response.data.message;
+            this.setState({message: this.state.message});
           }
         } else if (error.request) {
-          this.setState({
-            message: error.request
-          });
+          this.state.message.error = error.request;
+          this.setState({message: this.state.message});
         } else {
-          this.setState({
-            message: error.message
-          });
+          this.state.message.error = error.message;
+          this.setState({message: this.state.message});
         }
       });
   }
 
-  getValidationState() {
-    const length = this.state.user.username.length;
-    if (length > 4) {
-      return 'success';
-    } else if (length > 5) {
-      return 'warning';
-    } else if (length > 0) {
-      return 'error';
+  getValidationState(field: string) {
+    const value: string = this.state.user[field];
+
+    if (this.submitFlag) {
+      return null;
     }
-    return null;
+
+    switch (field) {
+      case 'username':
+      case 'firstname':
+      case 'lastname':
+      case 'password':
+        if (field !== 'firstname'
+          && field !== 'lastname'
+          && (value.length < 5 || value.length > 15)) {
+          this.state.errors[field] = `${field} should be min 5 and max 15 letters!`;
+        } else if ((field === 'firstname' || field === 'lastname') &&
+          (value.length < 1 || value.length > 30)) {
+          this.state.errors[field] = `${field} should be min 1 and max 15 letters!`;
+        } else if (!(/^[a-z0-9]+$/ig.test(value)) && field !== 'password') {
+          this.state.errors[field] = `${field} should only contain letters and numbers!`;
+        } else {
+          this.state.errors[field] = '';
+          return 'success';
+        }
+        return 'error';
+
+      case 'email':
+        if (!(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(value)) {
+          this.state.errors[field] = `Invalid ${field}!`;
+        } else {
+          this.state.errors[field] = '';
+          return 'success';
+        }
+        return 'error';
+
+      case 'confirmPassword':
+        if (value !== this.state.user.password) {
+          this.state.errors[field] = 'Passwords does not match!';
+        } else {
+          this.state.errors[field] = '';
+          return 'success';
+        }
+        return 'error';
+
+      case 'phone':
+        try {
+          if (this.state.user.phone.length === 10 && parseInt(this.state.user.phone, 10)) {
+            this.state.errors.phone = '';
+            return 'success';
+          }
+          this.state.errors.phone = 'Invalid Phone Number!';
+        } catch (e) {
+          this.state.errors.phone = 'Invalid Phone Number!';
+        }
+        return 'error';
+
+      default:
+        return null;
+    }
   }
 
   public render() {
