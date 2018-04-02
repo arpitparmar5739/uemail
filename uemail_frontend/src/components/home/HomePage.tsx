@@ -1,19 +1,9 @@
-import * as React from 'react';
-import {RouteComponentProps} from 'react-router';
+import React from 'react';
 
-interface HomePageProps {
-  url: string;
-}
-
-interface HomePageState {
-}
-
-class HomePage extends React.Component<HomePageProps & RouteComponentProps<{}>, HomePageState> {
-  public render() {
+class HomePage extends React.Component<{}> {
+  render() {
     return (
-      <div className={'HomePage'}>
-        Pathname = {this.props.location.pathname}
-      </div>
+      <h1>Home</h1>
     );
   }
 }

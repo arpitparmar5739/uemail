@@ -3,15 +3,13 @@ import * as morgan from 'morgan';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as expressValidator from 'express-validator';
-import {Express, Request, Response} from "express";
+import {Express, NextFunction, Request, Response} from "express";
 
 //import routers
 import {loginRouter} from './routers/LoginRouter';
 import {signupRouter} from './routers/SignupRouter';
 import {userRouter} from "./routers/UserRouter";
-
-//import service
-import {userService} from "./services/UserService";
+import {homePageRouter} from "./routers/HomePageRouter";
 
 class Server {
   private _app: Express;
@@ -28,7 +26,7 @@ class Server {
       }
     }));
     this._app.use(morgan("dev"));
-    this._app.use((error: Error, req: Request, res: Response, next: Function) => {
+    this._app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
       if (error) {
         res.status(400).send(error);
       }
@@ -56,14 +54,15 @@ class Server {
     //Routes Setup
 
     //Server Check
-    this._app.use("/", express.Router().get('/', (req, res) => {
+    this._app.use("/", express.Router().get('/', (req: Request, res: Response) => {
       res.json("Uemail server has started successfully");
     }));
 
-    //User Rotuer
+
     this._app.use('/users', userRouter);
     this._app.use('/login', loginRouter);
     this._app.use('/signup', signupRouter);
+    this._app.use('/home', homePageRouter);
   }
 
   private _onError(error: any): void {

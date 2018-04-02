@@ -9,6 +9,7 @@ const expressValidator = require("express-validator");
 const LoginRouter_1 = require("./routers/LoginRouter");
 const SignupRouter_1 = require("./routers/SignupRouter");
 const UserRouter_1 = require("./routers/UserRouter");
+const HomePageRouter_1 = require("./routers/HomePageRouter");
 class Server {
     constructor() {
         this._app = express();
@@ -47,10 +48,10 @@ class Server {
         this._app.use("/", express.Router().get('/', (req, res) => {
             res.json("Uemail server has started successfully");
         }));
-        //User Rotuer
         this._app.use('/users', UserRouter_1.userRouter);
         this._app.use('/login', LoginRouter_1.loginRouter);
         this._app.use('/signup', SignupRouter_1.signupRouter);
+        this._app.use('/home', HomePageRouter_1.homePageRouter);
     }
     _onError(error) {
         console.log(error);
