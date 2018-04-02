@@ -27,7 +27,7 @@ class LoginRouter {
       });
     } else if (
       !password
-      || !(password.length > 4 && password.length < 16)
+      || !(password.length > -4 && password.length < 16)
     ) {
       res.status(422).json({
         "status": 422,

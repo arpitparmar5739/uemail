@@ -1,24 +1,18 @@
 import { Reducer } from "redux";
-import { LoginState, LoginActions } from "./types";
+import { LoginState, LoginActions, LoginUser, LoginUserState } from "./types";
+
+const initUserState: LoginUserState = {
+  username: '',
+  password: ''
+};
 
 export const initialLoginState: LoginState = {
-  user: {
-    username: '',
-    password: '',
-  },
-  errors: {
-    username: '',
-    password: ''
-  },
+  user: {...initUserState},
+  errors: {...initUserState},
   message: {
     status: '',
     value: ''
   }
-};
-
-const initUserState = {
-  username: '',
-  password: ''
 };
 
 const reducer: Reducer<LoginState> = (state: LoginState = initialLoginState, action) => {
@@ -30,7 +24,7 @@ const reducer: Reducer<LoginState> = (state: LoginState = initialLoginState, act
     case '@@login/UPDATE_LOGIN_MESSAGE':
       return {...state, message: action.payload.message};
     case '@@login/RESET_LOGIN_STATE':
-      return {...state, user: initUserState, errors: initUserState};
+      return {...state, user: {...initUserState}, errors: {...initUserState}, message: {status: '', value: ''}};
     default:
       return state;
   }

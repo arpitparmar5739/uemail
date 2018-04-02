@@ -35,15 +35,8 @@ class LoginPage extends React.Component<allProps> {
   handleChange(e: FormEvent<FormControl>) {
     this.setMessageState('', '');
     let field = (e.target as HTMLInputElement).name;
-
-    if (field === 'username') {
-      this.props.user.username = (e.target as HTMLInputElement).value;
-    } else if (field === 'password') {
-      this.props.user.password = (e.target as HTMLInputElement).value;
-    } else {
-      throw new Error("Something went wrong!");
-    }
-    this.props.dispatch(updateLoginUser(this.props.user));
+    this.props.user[field] = (e.target as HTMLInputElement).value;
+    //this.props.dispatch(updateLoginUser(this.props.user));
   }
 
   getValidationState(field: string): formValidationState {

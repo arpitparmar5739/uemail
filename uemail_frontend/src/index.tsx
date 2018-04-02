@@ -13,9 +13,11 @@ import { Provider } from "react-redux";
 import { ApplicationState } from './store';
 import { initialLoginState } from "./store/login/reducer";
 import configureStore from './configureStore';
+import { initialSignupState } from "./store/signup/reducer";
 
 const initialState: ApplicationState = {
-  login: initialLoginState
+  login: initialLoginState,
+  signup: initialSignupState
 };
 
 let store: Store<ApplicationState> = configureStore(initialState);

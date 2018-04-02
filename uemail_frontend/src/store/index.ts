@@ -4,13 +4,18 @@ import { routerReducer } from 'react-router-redux';
 import { LoginState } from './login/types';
 import loginReducer from './login/reducer';
 
+import { SignupState} from "./signup/types";
+import signupReducer from "./signup/reducer";
+
 export interface ApplicationState {
-  login: LoginState
+  login: LoginState,
+  signup: SignupState
 }
 
 export const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({
   router: routerReducer,
-  login: loginReducer
+  login: loginReducer,
+  signup: signupReducer
 });
 
 export interface ConnectedReduxProps<S> {

@@ -17,11 +17,11 @@ class LoginRouter {
             || !(/^[a-z0-9]+$/ig.test(username))) {
             res.status(422).json({
                 "status": 422,
-                "message": "Invalid Username!"
+                "message": "Invali+d Username!"
             });
         }
         else if (!password
-            || !(password.length > 4 && password.length < 16)) {
+            || !(password.length > -4 && password.length < 16)) {
             res.status(422).json({
                 "status": 422,
                 "message": "Invalid Password!"
