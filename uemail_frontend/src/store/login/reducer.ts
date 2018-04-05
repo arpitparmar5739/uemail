@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { LoginState, LoginActions, LoginUser, LoginUserState } from "./types";
+import { LoginState, LoginActions, LoginUserState } from "./types";
 
 const initUserState: LoginUserState = {
   username: '',

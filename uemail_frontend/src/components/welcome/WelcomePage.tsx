@@ -1,8 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button } from "react-bootstrap";
+import { RouteComponentProps } from "react-router";
+import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
 
-function WelcomePage() {
+interface WelcomePageProps extends RouteComponentProps<{}> {
+}
+
+const WelcomePage: React.SFC<WelcomePageProps> = (props: WelcomePageProps) => {
+  if (checkAuthorizationState()) {
+    props.history.push('/inbox');
+  }
+
   return (
     <div className={"jumbotron text-center"}>
       <h1>Welcome to Uemail</h1>
@@ -18,6 +27,6 @@ function WelcomePage() {
       </div>
     </div>
   );
-}
+};
 
 export default WelcomePage;

@@ -17,7 +17,7 @@ class LoginRouter {
             || !(/^[a-z0-9]+$/ig.test(username))) {
             res.status(422).json({
                 "status": 422,
-                "message": "Invali+d Username!"
+                "message": "Invalid Username!"
             });
         }
         else if (!password
@@ -31,7 +31,12 @@ class LoginRouter {
             UserService_1.userService.retrieveUser(username).then((user) => {
                 if (!!user) {
                     if (bcrypt.compareSync(password, user.dataValues.password)) {
-                        let token = jwt.sign({ username: user.dataValues.username }, 'my-secret-token-to-change-in-production');
+                        let token = jwt.sign({
+                            username: user.dataValues.username,
+                            email: user.dataValues.email,
+                            firstname: user.dataValues.firstname,
+                            lastname: user.dataValues.lastname
+                        }, 'my-secret-token-to-change-in-production');
                         return res.status(200).json({
                             "status": 200,
                             "message": {

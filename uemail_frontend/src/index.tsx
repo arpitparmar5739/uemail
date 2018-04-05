@@ -12,24 +12,28 @@ import { Store } from "redux";
 import { Provider } from "react-redux";
 import { ApplicationState } from './store';
 import { initialLoginState } from "./store/login/reducer";
-import configureStore from './configureStore';
 import { initialSignupState } from "./store/signup/reducer";
+import { initialAuthState } from "./store/auth/reducer";
+import configureStore from './configureStore';
+import setAuthorizationDetails from "./utils/setAuthorizationDetails";
 
 const initialState: ApplicationState = {
   login: initialLoginState,
-  signup: initialSignupState
+  signup: initialSignupState,
+  auth: initialAuthState
 };
 
-let store: Store<ApplicationState> = configureStore(initialState);
+export let store: Store<ApplicationState> = configureStore(initialState);
+setAuthorizationDetails(localStorage.authToken);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
+  <Router>
+    <Provider store={store}>
       <div>
         <Header />
         <Routes />
       </div>
-    </Router>
-  </Provider>,
+    </Provider>
+  </Router>,
   document.getElementById('root')
 );

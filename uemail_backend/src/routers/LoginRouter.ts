@@ -38,7 +38,12 @@ class LoginRouter {
         if (!!user) {
           if (bcrypt.compareSync(password, user.dataValues.password)) {
             let token: string = jwt.sign(
-              {username: user.dataValues.username},
+              {
+                username: user.dataValues.username,
+                email: user.dataValues.email,
+                firstname: user.dataValues.firstname,
+                lastname: user.dataValues.lastname
+              },
               'my-secret-token-to-change-in-production'
             );
 

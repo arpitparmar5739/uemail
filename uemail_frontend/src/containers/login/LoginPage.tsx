@@ -7,9 +7,12 @@ import { ApplicationState, ConnectedReduxProps } from "../../store";
 import { formValidationState } from "../../types";
 import { updateLoginUser, updateLoginMessage, resetLoginState } from "../../store/login/actions";
 import { isArray } from "util";
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import { RouteComponentProps } from "react-router";
+import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
+import setAuthorizationDetails from "../../utils/setAuthorizationDetails";
 
-interface LoginProps extends ConnectedReduxProps<LoginState> {
+interface LoginProps extends ConnectedReduxProps<LoginState>, RouteComponentProps<{}> {
 }
 
 type allProps = LoginProps & LoginState;
@@ -73,12 +76,17 @@ class LoginPage extends React.Component<allProps> {
   submit() {
     if (this.validateForm()) {
       axios.post('http://localhost:3000/login', this.props.user)
-        .then(() => {
+        .then((res: AxiosResponse<{ user: Object, message: { token: string } }>) => {
+          const token: string = res.data.message.token;
           this.resetForm();
+          localStorage.setItem('authToken', token);
+          setAuthorizationDetails(token);
+          this.props.history.push('/inbox');
           this.setMessageState(
             'success',
-            'Login is successful. Redirecting to the home page...'
+            'Login is successful. Redirecting to the inbox page...'
           );
+          setTimeout(this.setMessageState('',''), 3000);
         })
         .catch((error) => {
           let err: string;
@@ -111,6 +119,12 @@ class LoginPage extends React.Component<allProps> {
     }
   }
 
+  componentWillMount() {
+    if (checkAuthorizationState()) {
+      this.props.history.push('/inbox');
+    }
+  }
+
   render() {
     return (
       <div>
@@ -125,6 +139,6 @@ class LoginPage extends React.Component<allProps> {
   }
 }
 
-const mapStateToProps = (state: ApplicationState) => state.login;
+const mapStateToProps = (state: ApplicationState) => (state.login);
 
 export default connect(mapStateToProps)(LoginPage);

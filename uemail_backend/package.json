@@ -4,9 +4,9 @@
   "description": "An application where users can send emails to each other.",
   "main": "src/index.js",
   "scripts": {
-    "prestart": "tsc",
-    "server": "nodemon ./build/src/index.js",
-    "start": "npm run server"
+    "ts": "tsc -w",
+    "open:src": "nodemon ./build/src/index.js",
+    "start": "npm-run-all --parallel ts open:src"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "jsonwebtoken": "^8.2.0",
     "morgan": "^1.9.0",
     "mysql2": "^1.5.1",
+    "npm-run-all": "^4.1.2",
     "sequelize": "^4.32.6",
     "typescript": "^2.7.1"
   },

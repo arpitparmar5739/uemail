@@ -8,8 +8,10 @@ import { SignupState } from "../../store/signup/types";
 import SignupForm from '../../components/signup/SingupForm';
 import { ApplicationState, ConnectedReduxProps } from "../../store";
 import { resetSignupState, updateSignupMessage, updateSignupUser } from "../../store/signup/actions";
+import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
+import { RouteComponentProps } from "react-router";
 
-interface SignupProps extends ConnectedReduxProps<SignupState> {
+interface SignupProps extends ConnectedReduxProps<SignupState>, RouteComponentProps<{}> {
 }
 
 type allProps = SignupProps & SignupState;
@@ -155,6 +157,12 @@ class SignupPage extends React.Component<allProps> {
     } else {
       console.log("o.O");
       this.setMessageState('error', 'Please fill the form correctly');
+    }
+  }
+
+  componentWillMount() {
+    if (checkAuthorizationState()) {
+      this.props.history.push('/inbox');
     }
   }
 
