@@ -6,6 +6,7 @@ import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
 import { store } from "../../index";
 import setAuthorizationDetails from "../../utils/setAuthorizationDetails";
 import { RouteComponentProps, withRouter } from "react-router";
+import { updateLoginMessage } from "../../store/login/actions";
 
 interface HeaderProps extends RouteComponentProps<{}> {
 }
@@ -20,6 +21,7 @@ class Header extends React.Component<HeaderProps> {
   logout() {
     localStorage.removeItem('authToken');
     setAuthorizationDetails(null);
+    store.dispatch(updateLoginMessage({status: 'success', value: 'Logged Out Successfully!'}));
     this.props.history.push('/login');
   }
 
