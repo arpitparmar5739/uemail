@@ -9,7 +9,7 @@ function default_1(sequelize, dataTypes) {
             allowNull: false
         },
         to: {
-            type: dataTypes.TEXT,
+            type: dataTypes.STRING,
             allowNull: false
         },
         cc: {
@@ -29,7 +29,8 @@ function default_1(sequelize, dataTypes) {
         },
         body: {
             type: dataTypes.TEXT,
-            allowNull: true
+            allowNull: true,
+            defaultValue: null
         },
         sent_by: {
             type: dataTypes.STRING,
@@ -37,7 +38,8 @@ function default_1(sequelize, dataTypes) {
         },
         any_attachment: {
             type: dataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: false,
+            defaultValue: false
         },
         email_type: {
             type: dataTypes.STRING,

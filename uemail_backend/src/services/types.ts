@@ -1,0 +1,1 @@
+type ValidEmailPromise = [string, Promise<boolean>];

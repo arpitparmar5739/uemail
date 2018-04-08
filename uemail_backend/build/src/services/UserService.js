@@ -49,17 +49,34 @@ class UserService {
                 resolve(userCount > 0);
             })
                 .catch(() => {
+                // True because if request fails then user might be present.
                 resolve(true);
             });
         });
     }
     emailIsPresent(email) {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
             index_1.models.User.count({ where: { email: email } })
                 .then((userCount) => {
                 resolve(userCount > 0);
             })
                 .catch(() => {
+                reject("Something bad happened while checking if email is present.");
+            });
+        });
+    }
+    emailsArePresent(emails) {
+        return new Promise((resolve, reject) => {
+            let allPromises = [];
+            emails.forEach((email) => {
+                allPromises.push(this.emailIsPresent(email));
+            });
+            Promise.all(allPromises).then((values) => {
+                for (const index in values) {
+                    if (!values[index]) {
+                        resolve([false, emails[index]]);
+                    }
+                }
                 resolve(true);
             });
         });

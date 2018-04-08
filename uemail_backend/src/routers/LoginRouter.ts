@@ -1,6 +1,6 @@
-import {userService} from '../services/UserService';
-import {UserInstance} from '../models/interfaces/UserInterface';
-import {Request, Response, Router} from 'express';
+import { userService } from '../services/UserService';
+import { UserInstance } from '../models/interfaces/UserInterface';
+import { Request, Response, Router } from 'express';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 

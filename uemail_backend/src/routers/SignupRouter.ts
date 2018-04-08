@@ -44,7 +44,7 @@ function validateUser(req: Request): Promise<boolean> {
 
 class SignupRouter {
   public router: Router;
-
+  
   constructor() {
     this.router = Router();
     this._routes();

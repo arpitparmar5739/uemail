@@ -10,6 +10,7 @@ import {loginRouter} from './routers/LoginRouter';
 import {signupRouter} from './routers/SignupRouter';
 import {userRouter} from "./routers/UserRouter";
 import {homePageRouter} from "./routers/HomePageRouter";
+import {emailRouter} from './routers/EmailRouter';
 
 class Server {
   private _app: Express;
@@ -63,6 +64,7 @@ class Server {
     this._app.use('/login', loginRouter);
     this._app.use('/signup', signupRouter);
     this._app.use('/home', homePageRouter);
+    this._app.use('/email', emailRouter);
   }
 
   private _onError(error: any): void {

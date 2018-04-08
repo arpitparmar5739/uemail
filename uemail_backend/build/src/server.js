@@ -10,6 +10,7 @@ const LoginRouter_1 = require("./routers/LoginRouter");
 const SignupRouter_1 = require("./routers/SignupRouter");
 const UserRouter_1 = require("./routers/UserRouter");
 const HomePageRouter_1 = require("./routers/HomePageRouter");
+const EmailRouter_1 = require("./routers/EmailRouter");
 class Server {
     constructor() {
         this._app = express();
@@ -52,6 +53,7 @@ class Server {
         this._app.use('/login', LoginRouter_1.loginRouter);
         this._app.use('/signup', SignupRouter_1.signupRouter);
         this._app.use('/home', HomePageRouter_1.homePageRouter);
+        this._app.use('/email', EmailRouter_1.emailRouter);
     }
     _onError(error) {
         console.log(error);
