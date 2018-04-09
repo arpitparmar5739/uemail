@@ -56,9 +56,20 @@ class UserService {
     }
     emailIsPresent(email) {
         return new Promise((resolve, reject) => {
-            index_1.models.User.count({ where: { email: email } })
-                .then((userCount) => {
-                resolve(userCount > 0);
+            index_1.models.User.findOne({ where: { email: email } })
+                .then((user) => {
+                if (user) {
+                    resolve({
+                        user_id: user.dataValues.id,
+                        email_id: email
+                    });
+                }
+                else {
+                    resolve({
+                        email_id: email,
+                        error: "Not Found"
+                    });
+                }
             })
                 .catch(() => {
                 reject("Something bad happened while checking if email is present.");
@@ -72,12 +83,7 @@ class UserService {
                 allPromises.push(this.emailIsPresent(email));
             });
             Promise.all(allPromises).then((values) => {
-                for (const index in values) {
-                    if (!values[index]) {
-                        resolve([false, emails[index]]);
-                    }
-                }
-                resolve(true);
+                resolve(values);
             });
         });
     }

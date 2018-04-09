@@ -2,24 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8bfeef1-6a5a-4c9b-a7be-55522cffe8bd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/.vscode/settings.json" afterPath="$PROJECT_DIR$/../uemail_backend/.vscode/settings.json" />
       <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/middleware/verifyToken.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/middleware/verifyToken.js" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/models/Email.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/models/Email.js" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/server.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/server.js" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/models/index.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/models/index.js" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/routers/EmailRouter.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/routers/EmailRouter.js" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/routers/SignupRouter.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/routers/SignupRouter.js" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/services/EmailService.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/services/EmailService.js" />
       <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/services/UserService.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/services/UserService.js" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/node_modules/@types/jsonwebtoken/package.json" afterPath="$PROJECT_DIR$/../uemail_backend/node_modules/@types/jsonwebtoken/package.json" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/node_modules/jsonwebtoken/CHANGELOG.md" afterPath="$PROJECT_DIR$/../uemail_backend/node_modules/jsonwebtoken/CHANGELOG.md" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/node_modules/jsonwebtoken/README.md" afterPath="$PROJECT_DIR$/../uemail_backend/node_modules/jsonwebtoken/README.md" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/node_modules/jsonwebtoken/decode.js" afterPath="$PROJECT_DIR$/../uemail_backend/node_modules/jsonwebtoken/decode.js" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/node_modules/jsonwebtoken/package.json" afterPath="$PROJECT_DIR$/../uemail_backend/node_modules/jsonwebtoken/package.json" />
       <change beforePath="$PROJECT_DIR$/../uemail_backend/package-lock.json" afterPath="$PROJECT_DIR$/../uemail_backend/package-lock.json" />
       <change beforePath="$PROJECT_DIR$/../uemail_backend/package.json" afterPath="$PROJECT_DIR$/../uemail_backend/package.json" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/index.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/index.ts" />
       <change beforePath="$PROJECT_DIR$/../uemail_backend/src/middleware/verifyToken.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/middleware/verifyToken.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/Attachments.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/Attachments.ts" />
       <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/Email.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/Email.ts" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/routers/LoginRouter.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/routers/LoginRouter.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/EmailRecipient.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/EmailRecipient.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/LoginSession.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/LoginSession.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/User.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/User.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/index.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/index.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/AttachmentsInterface.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/AttachmentsInterface.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/EmailInterface.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/EmailInterface.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/EmailRecipientInterface.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/EmailRecipientInterface.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/LoginSessionInterface.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/LoginSessionInterface.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/UserInterface.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/UserInterface.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/routers/EmailRouter.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/routers/EmailRouter.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/routers/HomePageRouter.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/routers/HomePageRouter.ts" />
       <change beforePath="$PROJECT_DIR$/../uemail_backend/src/routers/SignupRouter.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/routers/SignupRouter.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/routers/UserRouter.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/routers/UserRouter.ts" />
       <change beforePath="$PROJECT_DIR$/../uemail_backend/src/server.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/server.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/services/EmailService.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/services/EmailService.ts" />
       <change beforePath="$PROJECT_DIR$/../uemail_backend/src/services/UserService.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/services/UserService.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/services/types.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/services/types.ts" />
+      <change beforePath="$PROJECT_DIR$/../uemail_backend/tsconfig.json" afterPath="$PROJECT_DIR$/../uemail_backend/tsconfig.json" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -47,11 +59,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Header.tsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Header.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/shared/Header.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
+            <state relative-caret-position="278">
               <caret line="46" column="27" lean-forward="false" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SignupPage.tsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/signup/SignupPage.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -239,7 +261,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -272,10 +293,18 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="uemail_frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uemail_frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="signup" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -408,11 +437,13 @@
       <workItem from="1523072048703" duration="491000" />
       <workItem from="1523112874879" duration="6000" />
       <workItem from="1523143155158" duration="599000" />
+      <workItem from="1523239334853" duration="721000" />
+      <workItem from="1523240746703" duration="1692000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="324499000" />
+    <option name="totallyTimeSpent" value="326912000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -424,7 +455,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="27" width="1311" height="741" extended-state="6" />
+    <frame x="52" y="-11" width="1311" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921174" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -432,7 +464,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35714287" sideWeight="0.50619197" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7987013" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4090909" sideWeight="0.49380806" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4090909" sideWeight="0.49380806" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.49380806" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17984496" sideWeight="0.47449768" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -731,13 +763,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/signup/SignupPage.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/login/LoginPage.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -748,8 +773,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/shared/Header.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
+        <state relative-caret-position="278">
           <caret line="46" column="27" lean-forward="false" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/signup/SignupPage.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding />
         </state>
       </provider>

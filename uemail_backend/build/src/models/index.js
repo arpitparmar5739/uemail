@@ -37,6 +37,7 @@ class Database {
     }
     _config() {
         this._models.Attachment.belongsTo(this._models.Email);
+        this._models.EmailRecipient.belongsTo(this._models.Email);
         this._models.EmailRecipient.belongsTo(this._models.User);
         this._models.LoginSession.belongsTo(this._models.User);
     }

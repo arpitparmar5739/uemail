@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 function verifyToken(req, res, next) {
     const bearerToken = req.headers['authorization'];
     if (typeof bearerToken !== 'undefined') {
-        req["token"] = bearerToken;
+        req["token"] = bearerToken.split(" ")[1];
         jwt.verify(req['token'], 'my-secret-token-to-change-in-production', (err, authData) => {
             if (err) {
                 res.sendStatus(401);

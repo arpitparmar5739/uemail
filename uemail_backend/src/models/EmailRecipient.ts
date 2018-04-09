@@ -1,5 +1,5 @@
 import * as SequelizeStatic from 'sequelize';
-import {DataTypes, Sequelize} from 'sequelize';
+import { DataTypes, Sequelize } from 'sequelize';
 import {
   EmailRecipientInstance, EmailRecipientAttributes
 }
@@ -18,6 +18,6 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes): SequelizeS
         type: dataTypes.STRING,
         allowNull: false
       }
-    }, {underscored: true});
+    }, { underscored: true });
   return EmailRecipient;
 }

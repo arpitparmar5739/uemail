@@ -1,6 +1,6 @@
 import * as SequelizeStatic from 'sequelize';
-import {Sequelize, DataTypes} from 'sequelize';
-import {LoginSessionInstance, LoginSessionAttributes} from './interfaces/LoginSessionInterface';
+import { Sequelize, DataTypes } from 'sequelize';
+import { LoginSessionInstance, LoginSessionAttributes } from './interfaces/LoginSessionInterface';
 
 export default function (sequelize: Sequelize, dataTypes: DataTypes): SequelizeStatic.Model<LoginSessionInstance, LoginSessionAttributes> {
   let LoginSession = sequelize.define<LoginSessionInstance, LoginSessionAttributes>("LoginSession", {
@@ -10,6 +10,6 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes): SequelizeS
       primaryKey: true,
       allowNull: false
     }
-  }, {underscored: true});
+  }, { underscored: true });
   return LoginSession;
 }

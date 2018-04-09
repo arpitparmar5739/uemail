@@ -3,14 +3,14 @@ import * as morgan from 'morgan';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as expressValidator from 'express-validator';
-import {Express, NextFunction, Request, Response} from "express";
+import { Express, NextFunction, Request, Response } from "express";
 
 //import routers
-import {loginRouter} from './routers/LoginRouter';
-import {signupRouter} from './routers/SignupRouter';
-import {userRouter} from "./routers/UserRouter";
-import {homePageRouter} from "./routers/HomePageRouter";
-import {emailRouter} from './routers/EmailRouter';
+import { loginRouter } from './routers/LoginRouter';
+import { signupRouter } from './routers/SignupRouter';
+import { userRouter } from "./routers/UserRouter";
+import { homePageRouter } from "./routers/HomePageRouter";
+import { emailRouter } from './routers/EmailRouter';
 
 class Server {
   private _app: Express;
@@ -58,7 +58,6 @@ class Server {
     this._app.use("/", express.Router().get('/', (req: Request, res: Response) => {
       res.json("Uemail server has started successfully");
     }));
-
 
     this._app.use('/users', userRouter);
     this._app.use('/login', loginRouter);

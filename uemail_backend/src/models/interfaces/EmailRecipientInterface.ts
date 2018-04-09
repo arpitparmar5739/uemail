@@ -1,9 +1,9 @@
-import {Instance} from 'sequelize';
+import { Instance } from 'sequelize';
 
 export interface EmailRecipientAttributes {
-  id: number,
-  recipient: string,
+  id?: number,
   user_id: number,
+  email_id: number,
   recipient_type: string
 }
 

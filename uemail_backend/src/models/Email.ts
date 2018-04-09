@@ -1,6 +1,6 @@
 import * as SequelizeStatic from 'sequelize';
-import {Sequelize, DataTypes} from 'sequelize';
-import {EmailInstance, EmailAttributes} from './interfaces/EmailInterface';
+import { Sequelize, DataTypes } from 'sequelize';
+import { EmailInstance, EmailAttributes } from './interfaces/EmailInterface';
 
 export default function (sequelize: Sequelize, dataTypes: DataTypes): SequelizeStatic.Model<EmailInstance, EmailAttributes> {
   let Email = sequelize.define<EmailInstance, EmailAttributes>("Email", {
@@ -48,6 +48,6 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes): SequelizeS
       allowNull: false,
       defaultValue: "primary"
     }
-  }, {underscored: true});
+  }, { underscored: true });
   return Email;
 }

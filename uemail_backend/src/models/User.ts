@@ -1,7 +1,7 @@
 import * as bcrypt from 'bcrypt';
 import * as SequelizeStatic from 'sequelize';
-import {DataTypes, Sequelize} from 'sequelize';
-import {UserAttributes, UserInstance} from './interfaces/UserInterface';
+import { DataTypes, Sequelize } from 'sequelize';
+import { UserAttributes, UserInstance } from './interfaces/UserInterface';
 
 const saltRounds = 10;
 
@@ -39,7 +39,7 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes): SequelizeS
       type: dataTypes.STRING,
       allowNull: true
     }
-  }, {underscored: true});
+  }, { underscored: true });
 
   User.beforeCreate((user: UserInstance) => {
     user.dataValues.password = bcrypt.hashSync(user.dataValues.password, saltRounds);

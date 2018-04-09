@@ -60,11 +60,21 @@ export class UserService {
     });
   }
 
-  emailIsPresent(email: string): Promise<boolean> {
-    return new Promise<boolean>((resolve: Function, reject: Function) => {
-      models.User.count({ where: { email: email } })
-        .then((userCount) => {
-          resolve(userCount > 0);
+  emailIsPresent(email: string): Promise<EmailIsPresentObject> {
+    return new Promise<EmailIsPresentObject>((resolve: Function, reject: Function) => {
+      models.User.findOne({ where: { email: email } })
+        .then((user: UserInstance | null) => {
+          if (user) {
+            resolve({
+              user_id: user.dataValues.id,
+              email_id: email
+            });
+          } else {
+            resolve({
+              email_id: email,
+              error: "Not Found"
+            });
+          }
         })
         .catch(() => {
           reject("Something bad happened while checking if email is present.");
@@ -72,20 +82,15 @@ export class UserService {
     });
   }
 
-  emailsArePresent(emails: string[]): Promise<boolean> {
-    return new Promise<boolean>((resolve: Function, reject: Function) => {
-      let allPromises: Promise<boolean>[] = [];
+  emailsArePresent(emails: string[]): Promise<(EmailIsPresentObject)[]> {
+    return new Promise<(EmailIsPresentObject)[]>((resolve: Function, reject: Function) => {
+      let allPromises: Promise<EmailIsPresentObject>[] = [];
       emails.forEach((email) => {
         allPromises.push(this.emailIsPresent(email));
       });
 
-      Promise.all(allPromises).then((values: boolean[])=> {
-        for(const index in values) {
-          if (!values[index]) {
-            resolve([false, emails[index]]);
-          }
-        }
-        resolve(true);
+      Promise.all(allPromises).then((values: (EmailIsPresentObject)[]) => {
+        resolve(values);
       });
     });
   }

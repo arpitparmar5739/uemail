@@ -8,8 +8,8 @@ function validateUser(req) {
             .then((userIsPresent) => {
             if (!userIsPresent) {
                 UserService_1.userService.emailIsPresent(req.body.email)
-                    .then((emailIsPresent) => {
-                    if (!emailIsPresent) {
+                    .then((email_data) => {
+                    if (!!email_data.error) {
                         req.check('username', 'Username can not be empty.').exists().trim().not().isEmpty();
                         req.check('username', 'Invalid Username').isAlphanumeric().isLength({ min: 5, max: 15 });
                         req.check('email', 'Invalid Email').trim().isEmail().isLength({ max: 50 });
@@ -25,7 +25,7 @@ function validateUser(req) {
                         req.check('phone', 'Invalid Phone Number')
                             .trim().isLength({ min: 10, max: 10 }).isNumeric();
                     }
-                    if (emailIsPresent) {
+                    if (!!email_data.user_id) {
                         req.check('email', 'Email already exists!')
                             .not().equals(req.body.email);
                     }

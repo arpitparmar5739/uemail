@@ -2,14 +2,14 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as SequelizeStatic from "sequelize";
 
-import {Sequelize, Model} from "sequelize";
-import {configs} from "../../configs/Configs";
+import { Sequelize, Model } from "sequelize";
+import { configs } from "../../configs/Configs";
 
-import {UserAttributes, UserInstance} from "./interfaces/UserInterface";
-import {EmailAttributes, EmailInstance} from "./interfaces/EmailInterface";
-import {AttachmentAttributes, AttachmentInstance} from "./interfaces/AttachmentsInterface";
-import {LoginSessionAttributes, LoginSessionInstance} from "./interfaces/LoginSessionInterface";
-import {EmailRecipientAttributes, EmailRecipientInstance} from "./interfaces/EmailRecipientInterface";
+import { UserAttributes, UserInstance } from "./interfaces/UserInterface";
+import { EmailAttributes, EmailInstance } from "./interfaces/EmailInterface";
+import { AttachmentAttributes, AttachmentInstance } from "./interfaces/AttachmentsInterface";
+import { LoginSessionAttributes, LoginSessionInstance } from "./interfaces/LoginSessionInterface";
+import { EmailRecipientAttributes, EmailRecipientInstance } from "./interfaces/EmailRecipientInterface";
 
 export interface SequelizeModels {
   User: SequelizeStatic.Model<UserInstance, UserAttributes>;
@@ -65,6 +65,7 @@ class Database {
 
   private _config(): void {
     this._models.Attachment.belongsTo(this._models.Email);
+    this._models.EmailRecipient.belongsTo(this._models.Email);
     this._models.EmailRecipient.belongsTo(this._models.User);
     this._models.LoginSession.belongsTo(this._models.User);
   }

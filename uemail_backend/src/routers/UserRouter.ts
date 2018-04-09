@@ -1,6 +1,6 @@
-import {userService} from '../services/UserService';
-import {UserInstance} from '../models/interfaces/UserInterface';
-import {Request, Response, Router} from 'express';
+import { userService } from '../services/UserService';
+import { UserInstance } from '../models/interfaces/UserInterface';
+import { Request, Response, Router } from 'express';
 import verifyToken from "../middleware/verifyToken";
 import * as jwt from 'jsonwebtoken';
 
@@ -28,7 +28,7 @@ class UserRouter {
               "phone": user.dataValues.phone
             });
           } else {
-            return res.json({"message": "Invalid username/password!"});
+            return res.json({ "message": "Invalid username/password!" });
           }
         }).catch((error: Error) => {
           return res.json({

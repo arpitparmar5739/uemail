@@ -1,6 +1,6 @@
-import {userService} from '../services/UserService';
-import {UserInstance} from '../models/interfaces/UserInterface';
-import {Request, Response, Router} from 'express';
+import { userService } from '../services/UserService';
+import { UserInstance } from '../models/interfaces/UserInterface';
+import { Request, Response, Router } from 'express';
 
 function validateUser(req: Request): Promise<boolean> {
   return new Promise<boolean>((resolve: Function) => {
@@ -8,31 +8,30 @@ function validateUser(req: Request): Promise<boolean> {
       .then((userIsPresent) => {
         if (!userIsPresent) {
           userService.emailIsPresent(req.body.email)
-            .then((emailIsPresent) => {
-              if (!emailIsPresent) {
+            .then((email_data) => {
+              if (!!email_data.error) {
                 req.check('username', 'Username can not be empty.').exists().trim().not().isEmpty();
-                req.check('username', 'Invalid Username').isAlphanumeric().isLength({min: 5, max:15});
-                req.check('email', 'Invalid Email').trim().isEmail().isLength({max:50});
+                req.check('username', 'Invalid Username').isAlphanumeric().isLength({ min: 5, max: 15 });
+                req.check('email', 'Invalid Email').trim().isEmail().isLength({ max: 50 });
                 req.check('password', 'Invalid Password')
-                  .trim().isLength({min: 5, max:15});
+                  .trim().isLength({ min: 5, max: 15 });
                 req.check('password', 'Passwords does not match!')
                   .equals(req.body.confirmPassword);
                 req.check('firstname', 'Invalid First Name')
-                  .trim().not().isEmpty().isLength({min: 1, max:30});
+                  .trim().not().isEmpty().isLength({ min: 1, max: 30 });
                 req.check('firstname', 'Invalid First Name').isAlpha();
                 req.check('lastname', 'Invalid Last Name')
-                  .trim().isLength({min: 1, max: 30}).isAlpha();
+                  .trim().isLength({ min: 1, max: 30 }).isAlpha();
                 req.check('phone', 'Invalid Phone Number')
-                  .trim().isLength({min: 10, max: 10}).isNumeric();
+                  .trim().isLength({ min: 10, max: 10 }).isNumeric();
               }
 
-              if (emailIsPresent) {
+              if (!!email_data.user_id) {
                 req.check('email', 'Email already exists!')
                   .not().equals(req.body.email);
               }
               resolve(!req.validationErrors());
             });
-
         } else {
           req.check('username', 'Username already exists!')
             .not().equals(req.body.username);
@@ -44,7 +43,7 @@ function validateUser(req: Request): Promise<boolean> {
 
 class SignupRouter {
   public router: Router;
-  
+
   constructor() {
     this.router = Router();
     this._routes();
