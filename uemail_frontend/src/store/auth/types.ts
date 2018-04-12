@@ -1,4 +1,5 @@
 import { Action } from "redux";
+import { ApplicationState } from "../index";
 
 export interface AuthUser {
   username: string;
@@ -26,4 +27,8 @@ export interface SetCurrentUser extends Action {
   }
 }
 
-export type AuthActions = SetCurrentUser;
+export interface ResetStore extends Action {
+  type: '@@root/RESET_STORE';
+}
+
+export type AuthActions = SetCurrentUser | ResetStore;

@@ -1,13 +1,11 @@
 import { createStore, Store } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
-import { ApplicationState, reducers } from './store';
+import { ApplicationState, rootReducer } from './store';
 
-export default function configureStore(
-  initialState: ApplicationState,
-): Store<ApplicationState> {
+export default function configureStore(initialState: ApplicationState): Store<ApplicationState> {
   return createStore<ApplicationState>(
-    reducers,
-    initialState,
+    rootReducer,
+    (<any>Object).assign({}, initialState),
     devToolsEnhancer({}));
 }

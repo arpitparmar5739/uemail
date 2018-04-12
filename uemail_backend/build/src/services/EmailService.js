@@ -18,6 +18,13 @@ class EmailService {
         });
         return promise;
     }
+    // deleteEmail(): Promise<boolean> {
+    //   return new Promise<boolean>((resolve, reject) => {
+    //     sequelize.transaction(() => {
+    //       return models.Email.destroy();
+    //     });
+    //   });
+    // }
     setEmailRecipients(email_id, req) {
         let emailRecipients = [{
                 user_id: req['users_data']['to'].user_id,
@@ -62,9 +69,9 @@ class EmailService {
     checkAllEmails(allEmailsToCheck) {
         let allPresentEmails = { to: null, cc: null, bcc: null };
         let promise = new Promise((resolve, reject) => {
-            UserService_1.userService.emailsArePresent([allEmailsToCheck.to]).then((toEmailIsPresent) => {
-                if (!toEmailIsPresent[0].error) {
-                    allPresentEmails.to = toEmailIsPresent[0];
+            UserService_1.userService.emailsArePresent(allEmailsToCheck.to).then((toEmailsArePresent) => {
+                if (toEmailsArePresent) {
+                    allPresentEmails.to = toEmailsArePresent;
                     if (!!allEmailsToCheck.cc) {
                         UserService_1.userService.emailsArePresent(allEmailsToCheck.cc).then((ccEmailsArePresent) => {
                             if (ccEmailsArePresent) {

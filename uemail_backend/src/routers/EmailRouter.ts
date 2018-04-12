@@ -49,10 +49,7 @@ class EmailRouter {
           });
       } else {
         let errors = req.validationErrors();
-        for (const item in errors) {
-          errors[item] = errors[item].msg;
-        }
-        res.status(422).json({ "Errors": errors });
+        res.status(422).json({ status: "422", message: errors });
       }
     });
   }

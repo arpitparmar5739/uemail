@@ -9,7 +9,7 @@ function default_1(sequelize, dataTypes) {
             allowNull: false
         },
         to: {
-            type: dataTypes.STRING,
+            type: dataTypes.TEXT,
             allowNull: false
         },
         cc: {

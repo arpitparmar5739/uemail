@@ -1,5 +1,5 @@
 type AllPresentEmails = {
-  to: EmailIsPresentObject | null,
+  to: EmailIsPresentObject[] | null,
   cc: EmailIsPresentObject[] | null,
   bcc: EmailIsPresentObject[] | null
 }
@@ -13,7 +13,7 @@ type EmailIsPresentObject = {
 type ValidEmailPromise = [string, Promise<boolean>];
 
 type AllEmailsToCheck = {
-  to: string,
+  to: string[],
   cc?: string[],
   bcc?: string[]
 };

@@ -7,21 +7,34 @@ import loginReducer from './login/reducer';
 import { SignupState} from "./signup/types";
 import signupReducer from "./signup/reducer";
 
-import { AuthState } from "./auth/types";
+import { AuthActions, AuthState } from "./auth/types";
 import authReducer from "./auth/reducer";
+
+import { SendState } from "./send/types";
+import sendReducer from './send/reducer';
+import { initialState } from "../index";
 
 export interface ApplicationState {
   login: LoginState,
   signup: SignupState,
-  auth: AuthState
+  auth: AuthState,
+  send: SendState
 }
 
-export const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({
+const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({
   router: routerReducer,
   login: loginReducer,
   signup: signupReducer,
-  auth: authReducer
+  auth: authReducer,
+  send: sendReducer
 });
+
+export const rootReducer: Reducer<ApplicationState> = (state: ApplicationState, action) => {
+  if ((action as AuthActions).type === '@@root/RESET_STORE') {
+    state = undefined!;
+  }
+  return reducers(state, action);
+};
 
 export interface ConnectedReduxProps<S> {
   dispatch: Dispatch<S>;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { store } from "../index";
-import { setCurrentUser } from "../store/auth/actions";
+import { resetStore, setCurrentUser } from "../store/auth/actions";
 import jwt from 'jsonwebtoken';
 
 export default function setAuthorizationDetails (token: string|null) {
@@ -9,6 +9,6 @@ export default function setAuthorizationDetails (token: string|null) {
     store.dispatch(setCurrentUser(jwt.decode(token)));
   } else {
     delete axios.defaults.headers.common['Authorization'];
-    store.dispatch(setCurrentUser(null));
+    store.dispatch(resetStore());
   }
 }

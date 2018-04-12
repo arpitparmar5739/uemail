@@ -16,14 +16,18 @@ import { initialSignupState } from "./store/signup/reducer";
 import { initialAuthState } from "./store/auth/reducer";
 import configureStore from './configureStore';
 import setAuthorizationDetails from "./utils/setAuthorizationDetails";
+import { initialSendState } from "./store/send/reducer";
 
-const initialState: ApplicationState = {
-  login: initialLoginState,
-  signup: initialSignupState,
-  auth: initialAuthState
-};
+export function initialState(): ApplicationState {
+  return ({
+    login: initialLoginState(),
+    signup: initialSignupState(),
+    auth: initialAuthState(),
+    send: initialSendState()
+  });
+}
 
-export let store: Store<ApplicationState> = configureStore(initialState);
+export let store: Store<ApplicationState> = configureStore(initialState());
 setAuthorizationDetails(localStorage.authToken);
 
 ReactDOM.render(

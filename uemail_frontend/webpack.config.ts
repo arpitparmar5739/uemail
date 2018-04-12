@@ -1,7 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 
-const config = {
+const config: webpack.Configuration = {
   mode: "development",
   devtool: 'source-map',
   entry: [
@@ -20,7 +20,8 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new webpack.NamedModulesPlugin(),

@@ -11,7 +11,7 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes): SequelizeS
       allowNull: false
     },
     to: {
-      type: dataTypes.STRING,
+      type: dataTypes.TEXT,
       allowNull: false
     },
     cc: {
