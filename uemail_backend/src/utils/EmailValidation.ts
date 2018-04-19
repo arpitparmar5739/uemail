@@ -8,7 +8,7 @@ function checkEmail(req: Request, email: string, senderType: string): void {
   }
 }
 
-function setUsersData (req: Request, data: any, field: string) {
+function setUsersData(req: Request, data: any, field: string) {
   for (const item of data) {
     if (!!item.user_id) {
       req['users_data'][field] = data;
@@ -17,6 +17,34 @@ function setUsersData (req: Request, data: any, field: string) {
         .not().equals(req.body[field]);
     }
   }
+}
+
+function removeDuplicates(allEmailsToCheck): AllEmailsToCheck {
+  const to = new Set<string[]>(allEmailsToCheck.to);
+  const bcc = allEmailsToCheck.bcc && new Set<string[]>(allEmailsToCheck.bcc);
+  const cc = allEmailsToCheck.cc && new Set<string[]>(allEmailsToCheck.cc);
+
+  if (allEmailsToCheck.bcc) {
+    allEmailsToCheck.bcc.forEach((bcc_email, index)=> {
+      if (to.has(bcc_email)) {
+        bcc.delete(bcc_email);
+      }
+    });
+  }
+
+  if (allEmailsToCheck.cc) {
+    allEmailsToCheck.cc.forEach((cc_email, index)=> {
+      if (to.has(cc_email) || (bcc && bcc.has(cc_email))) {
+        cc.delete(cc_email);
+      }
+    });
+  }
+
+  allEmailsToCheck.to = [...to];
+  allEmailsToCheck.bcc = bcc && [...bcc];
+  allEmailsToCheck.cc = cc && [...cc];
+
+  return allEmailsToCheck;
 }
 
 export function validateEmail(req: Request): Promise<boolean> {
@@ -35,19 +63,25 @@ export function validateEmail(req: Request): Promise<boolean> {
         bcc: !!req.body.bcc ? req.body.bcc.replace(/\s/g, '').split(",") : undefined
       };
 
+      allEmailsToCheck = removeDuplicates(allEmailsToCheck);
+
+      console.log("\n\n");
+      console.log(allEmailsToCheck);
+      console.log("\n\n");
+
       allEmailsToCheck.to.forEach(email => {
         checkEmail(req, email, "to");
       });
 
-      if (!!allEmailsToCheck.cc) {
-        allEmailsToCheck.cc.forEach(email => {
-          checkEmail(req, email, "cc");
-        });
-      }
-
       if (!!allEmailsToCheck.bcc) {
         allEmailsToCheck.bcc.forEach(email => {
           checkEmail(req, email, "bcc");
+        });
+      }
+
+      if (!!allEmailsToCheck.cc) {
+        allEmailsToCheck.cc.forEach(email => {
+          checkEmail(req, email, "cc");
         });
       }
 
@@ -56,12 +90,13 @@ export function validateEmail(req: Request): Promise<boolean> {
           if (data && !!data.to) {
             req['users_data'] = {};
             setUsersData(req, data.to, "to");
-            
-            if (!!data.cc) {
-              setUsersData(req, data.cc, "cc");
-            }
+
             if (!!data.bcc) {
               setUsersData(req, data.bcc, "bcc");
+            }
+
+            if (!!data.cc) {
+              setUsersData(req, data.cc, "cc");
             }
           } else {
             req.check('to', `Email Validation Failed!`)

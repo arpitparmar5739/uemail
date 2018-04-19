@@ -9,7 +9,6 @@ import { Express, NextFunction, Request, Response } from "express";
 import { loginRouter } from './routers/LoginRouter';
 import { signupRouter } from './routers/SignupRouter';
 import { userRouter } from "./routers/UserRouter";
-import { homePageRouter } from "./routers/HomePageRouter";
 import { emailRouter } from './routers/EmailRouter';
 
 class Server {
@@ -62,7 +61,6 @@ class Server {
     this._app.use('/users', userRouter);
     this._app.use('/login', loginRouter);
     this._app.use('/signup', signupRouter);
-    this._app.use('/home', homePageRouter);
     this._app.use('/email', emailRouter);
   }
 

@@ -20,6 +20,20 @@ export class UserService {
     return promise;
   }
 
+  retrieveUser(username: string): Promise<UserInstance> {
+    return new Promise<UserInstance>((resolve: Function, reject: Function) => {
+      sequelize.transaction((t: Transaction) => {
+        return models.User.findOne({
+          where: { username: username }
+        }).then((user: UserInstance | null) => {
+          resolve(user);
+        }).catch((error: Error) => {
+          reject(error);
+        });
+      });
+    });
+  }
+
   retrieveUsers(): Promise<Array<UserInstance>> {
     let promise = new Promise<Array<UserInstance>>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
@@ -33,13 +47,16 @@ export class UserService {
     return promise;
   }
 
-  retrieveUser(username: string): Promise<UserInstance> {
-    return new Promise<UserInstance>((resolve: Function, reject: Function) => {
-      sequelize.transaction((t: Transaction) => {
-        return models.User.findOne({
-          where: { username: username }
-        }).then((user: UserInstance | null) => {
-          resolve(user);
+  getUserNamesByEmailIds(emails: string[]): Promise<{[email: string]: string}[]> {
+    return new Promise<{[email: string]: string}[]>((resolve, reject) => {
+      sequelize.transaction(() => {
+        const allEmailsArr: string[] = [...new Set(emails)];
+        return models.User.findAll({where: {email: allEmailsArr}}).then((users: Array<UserInstance>) => {
+          let allEmailsWithUserNames: {[email: string]: string}[] = [];
+          users.forEach((user) => {
+            allEmailsWithUserNames[user.dataValues.email] = user.dataValues.firstname + " " + user.dataValues.lastname;
+          });
+          resolve(allEmailsWithUserNames);
         }).catch((error: Error) => {
           reject(error);
         });

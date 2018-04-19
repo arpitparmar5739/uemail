@@ -7,7 +7,7 @@ export interface EmailAttributes {
   bcc: string,
   subject: string,
   body: string,
-  sentby: string,
+  sent_by: string,
   any_attachment: string,
   email_type: string
 }

@@ -120,8 +120,7 @@ class SignupPage extends React.Component<allProps> {
   submit() {
     if (this.validateForm()) {
       axios.post('http://localhost:3000/signup', this.props.user)
-        .then((data) => {
-          console.log(data);
+        .then(() => {
           const username: string = this.props.user.username;
           this.resetForm();
           this.setMessageState(
@@ -155,7 +154,6 @@ class SignupPage extends React.Component<allProps> {
             5000);
         });
     } else {
-      console.log("o.O");
       this.setMessageState('error', 'Please fill the form correctly');
     }
   }

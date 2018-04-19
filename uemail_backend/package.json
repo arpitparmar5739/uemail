@@ -4,9 +4,8 @@
   "description": "An application where users can send emails to each other.",
   "main": "src/index.js",
   "scripts": {
-    "ts": "tsc -w",
-    "open:src": "nodemon ./build/src/index.js",
-    "start": "npm-run-all --parallel ts open:src"
+    "open:src": "nodemon",
+    "start": "npm-run-all --parallel open:src"
   },
   "repository": {
     "type": "git",

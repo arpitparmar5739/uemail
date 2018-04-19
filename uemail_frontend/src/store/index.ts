@@ -12,13 +12,24 @@ import authReducer from "./auth/reducer";
 
 import { SendState } from "./send/types";
 import sendReducer from './send/reducer';
-import { initialState } from "../index";
+
+import { InboxState } from "./inbox/types";
+import inboxReducer from './inbox/reducer';
+
+import { ViewEmailState } from "./view_email/types";
+import viewEmailReducer from './view_email/reducer';
+
+import { SentState } from "./sent/types";
+import sentReducer from './sent/reducer';
 
 export interface ApplicationState {
   login: LoginState,
   signup: SignupState,
   auth: AuthState,
-  send: SendState
+  send: SendState,
+  inbox: InboxState,
+  sent: SentState,
+  view_email: ViewEmailState
 }
 
 const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({
@@ -26,7 +37,10 @@ const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({
   login: loginReducer,
   signup: signupReducer,
   auth: authReducer,
-  send: sendReducer
+  send: sendReducer,
+  inbox: inboxReducer,
+  sent: sentReducer,
+  view_email: viewEmailReducer
 });
 
 export const rootReducer: Reducer<ApplicationState> = (state: ApplicationState, action) => {

@@ -1,6 +1,5 @@
 import { Reducer } from "redux";
 import { isEmpty } from 'lodash';
-import { initialState } from "../../index";
 import { AuthActions, AuthState } from "./types";
 
 export function initialAuthState(): AuthState {

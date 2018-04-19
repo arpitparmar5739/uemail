@@ -51,8 +51,46 @@ class EmailRouter {
             }
         });
     }
+    getEmails(req, res) {
+        EmailService_1.emailService.getInboxEmails(req).then((emails) => {
+            res.status(200).json(emails);
+        }).catch((err) => {
+            res.status(500).json({ "status": "error", "message": "Something went wrong!" });
+        });
+    }
+    deleteEmails(req, res) {
+        const allEmailIds = req.body.email_ids || [];
+        for (let email_id of allEmailIds) {
+            if (typeof email_id !== 'number') {
+                res.status(422).json("Invalid Input!");
+            }
+        }
+        EmailService_1.emailService.deleteEmailsThroughIds(req, allEmailIds).then((data) => {
+            res.status(200).json(data);
+        });
+    }
+    totalEmails(req, res) {
+        EmailService_1.emailService.getTotalInboxEmails(req).then((count) => {
+            res.status(200).json({ "totalEmails": count });
+        });
+    }
+    getEmail(req, res) {
+        const email_id = req.query.email_id;
+        if (!!email_id) {
+            EmailService_1.emailService.getEmailFromEmailId(req, email_id).then(email => {
+                res.status(200).json(email);
+            });
+        }
+        else {
+            res.status(422).json({ error: "Invalid Input!" });
+        }
+    }
     _routes() {
         this.router.post('/send', [verifyToken_1.default], this.sendEmail);
+        this.router.post('/delete', [verifyToken_1.default], this.deleteEmails);
+        this.router.get('/get_emails', [verifyToken_1.default], this.getEmails);
+        this.router.get('/get_email?:email_id', [verifyToken_1.default], this.getEmail);
+        this.router.get('/totalEmails', [verifyToken_1.default], this.totalEmails);
     }
 }
 exports.emailRouter = new EmailRouter().router;

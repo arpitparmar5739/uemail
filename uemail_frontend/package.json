@@ -4,7 +4,6 @@
   "description": "Uemail front end application.",
   "main": "./src/index.tsx",
   "scripts": {
-    "prestart": "ts-node ./tools/srcMessage.ts",
     "start": "npm-run-all --parallel open:src",
     "open:src": "ts-node ./tools/srcServer.ts"
   },
