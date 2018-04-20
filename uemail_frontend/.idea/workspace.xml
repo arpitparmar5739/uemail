@@ -2,44 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8bfeef1-6a5a-4c9b-a7be-55522cffe8bd" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/sent/SentPage.tsx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/containers/sent/SentPage.tsx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/store/inbox/actions.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/store/inbox/reducer.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/store/inbox/types.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/store/sent/actions.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/store/sent/reducer.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/store/sent/types.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/store/view_email/actions.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/store/view_email/reducer.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/store/view_email/types.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/styles/inbox.css" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/routers/EmailRouter.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/routers/EmailRouter.js" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/server.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/server.js" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/services/EmailService.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/services/EmailService.js" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/services/EmailValidation.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/services/EmailValidation.js" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/services/UserService.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/services/UserService.js" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/build/src/utils/EmailValidation.js" afterPath="$PROJECT_DIR$/../uemail_backend/build/src/utils/EmailValidation.js" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/configs/DatabaseConfig.ts" afterPath="$PROJECT_DIR$/../uemail_backend/configs/DatabaseConfig.ts" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/package.json" afterPath="$PROJECT_DIR$/../uemail_backend/package.json" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/EmailInterface.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/models/interfaces/EmailInterface.ts" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/routers/EmailRouter.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/routers/EmailRouter.ts" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/routers/HomePageRouter.ts" afterPath="" />
       <change beforePath="$PROJECT_DIR$/../uemail_backend/src/server.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/server.ts" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/services/EmailService.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/services/EmailService.ts" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/services/UserService.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/services/UserService.ts" />
-      <change beforePath="$PROJECT_DIR$/../uemail_backend/src/utils/EmailValidation.ts" afterPath="$PROJECT_DIR$/../uemail_backend/src/utils/EmailValidation.ts" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/src/components/inbox/InboxPage.tsx" afterPath="$PROJECT_DIR$/src/components/inbox/InboxPage.tsx" />
       <change beforePath="$PROJECT_DIR$/src/containers/inbox/InboxPage.tsx" afterPath="$PROJECT_DIR$/src/containers/inbox/InboxPage.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/signup/SignupPage.tsx" afterPath="$PROJECT_DIR$/src/containers/signup/SignupPage.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" afterPath="$PROJECT_DIR$/src/index.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/routes.tsx" afterPath="$PROJECT_DIR$/src/routes.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/store/auth/reducer.ts" afterPath="$PROJECT_DIR$/src/store/auth/reducer.ts" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.ts" afterPath="$PROJECT_DIR$/src/store/index.ts" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" afterPath="$PROJECT_DIR$/tsconfig.json" />
+      <change beforePath="$PROJECT_DIR$/src/containers/sent/SentPage.tsx" afterPath="$PROJECT_DIR$/src/containers/sent/SentPage.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/view_email/ViewEmail.tsx" afterPath="$PROJECT_DIR$/src/containers/view_email/ViewEmail.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/utils/checkAuthorizationState.ts" afterPath="$PROJECT_DIR$/src/utils/checkAuthorizationState.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -55,28 +23,7 @@
     <favorites_list name="uemail_frontend" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SentPage.tsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/sent/SentPage.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="23" column="86" lean-forward="false" selection-start-line="23" selection-start-column="86" selection-end-line="23" selection-end-column="86" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InboxPage.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/inbox/InboxPage.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="23" column="86" lean-forward="false" selection-start-line="23" selection-start-column="86" selection-end-line="23" selection-end-column="86" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -148,7 +95,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/store/send/actions.ts" />
         <option value="$PROJECT_DIR$/src/components/send/SendEmailPage.tsx" />
         <option value="$PROJECT_DIR$/src/store/auth/actions.ts" />
         <option value="$PROJECT_DIR$/src/store/root/types.ts" />
@@ -158,7 +104,6 @@
         <option value="$PROJECT_DIR$/src/configureStore.ts" />
         <option value="$PROJECT_DIR$/src/components/welcome/WelcomePage.tsx" />
         <option value="$PROJECT_DIR$/src/containers/send/SendEmailPage.tsx" />
-        <option value="$PROJECT_DIR$/src/utils/setAuthorizationDetails.ts" />
         <option value="$PROJECT_DIR$/webpack.config.ts" />
         <option value="$PROJECT_DIR$/src/store/send/reducer.ts" />
         <option value="$PROJECT_DIR$/tools/srcServer.ts" />
@@ -167,7 +112,6 @@
         <option value="$PROJECT_DIR$/src/styles/main.css" />
         <option value="$PROJECT_DIR$/src/store/auth/reducer.ts" />
         <option value="$PROJECT_DIR$/src/index.html" />
-        <option value="$PROJECT_DIR$/src/containers/login/LoginPage.tsx" />
         <option value="$PROJECT_DIR$/src/store/login/actions.ts" />
         <option value="[Connection]consoles/Connection" />
         <option value="$PROJECT_DIR$/src/store/inbox/actions.ts" />
@@ -192,13 +136,16 @@
         <option value="$PROJECT_DIR$/src/store/sent/actions.ts" />
         <option value="$PROJECT_DIR$/src/store/index.ts" />
         <option value="$PROJECT_DIR$/src/index.tsx" />
-        <option value="$PROJECT_DIR$/src/containers/inbox/InboxPage.tsx" />
         <option value="$PROJECT_DIR$/src/routes.tsx" />
-        <option value="$PROJECT_DIR$/src/containers/sent/SentPage.tsx" />
         <option value="$PROJECT_DIR$/src/store/view_email/reducer.ts" />
-        <option value="$PROJECT_DIR$/src/containers/view_email/ViewEmail.tsx" />
         <option value="$PROJECT_DIR$/src/components/sent/SentPage.tsx" />
         <option value="$PROJECT_DIR$/src/components/inbox/InboxPage.tsx" />
+        <option value="$PROJECT_DIR$/src/containers/login/LoginPage.tsx" />
+        <option value="$PROJECT_DIR$/src/utils/setAuthorizationDetails.ts" />
+        <option value="$PROJECT_DIR$/src/containers/view_email/ViewEmail.tsx" />
+        <option value="$PROJECT_DIR$/src/containers/sent/SentPage.tsx" />
+        <option value="$PROJECT_DIR$/src/utils/checkAuthorizationState.ts" />
+        <option value="$PROJECT_DIR$/src/containers/inbox/InboxPage.tsx" />
       </list>
     </option>
   </component>
@@ -225,10 +172,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="52" />
-    <option name="y" value="-11" />
-    <option name="width" value="1315" />
-    <option name="height" value="780" />
+    <option name="x" value="55" />
+    <option name="y" value="27" />
+    <option name="width" value="656" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -268,8 +215,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -286,54 +233,13 @@
               <item name="uemail_frontend" type="b2602c69:ProjectViewProjectNode" />
               <item name="uemail_frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uemail_frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uemail_frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="inbox" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uemail_frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uemail_frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="sent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uemail_frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uemail_frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uemail_frontend" type="b2602c69:ProjectViewProjectNode" />
               <item name="uemail_frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="sent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uemail_frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uemail_frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="view_email" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uemail_frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uemail_frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uemail_frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uemail_frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-              <item name="view_email" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -491,12 +397,13 @@
       <workItem from="1524017760754" duration="9523000" />
       <workItem from="1524028034605" duration="7200000" />
       <workItem from="1524056474270" duration="5827000" />
-      <workItem from="1524112062855" duration="2128000" />
+      <workItem from="1524112062855" duration="3542000" />
+      <workItem from="1524186796652" duration="3823000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="493062000" />
+    <option name="totallyTimeSpent" value="498299000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -508,22 +415,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="52" y="-11" width="1311" height="741" extended-state="6" />
-    <editor active="true" />
+    <frame x="55" y="27" width="1311" height="741" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37337664" sideWeight="0.51705426" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7987013" sideWeight="0.49689922" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45779222" sideWeight="0.48294574" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7987013" sideWeight="0.49689922" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3961039" sideWeight="0.48294574" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29707792" sideWeight="0.48449612" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16976744" sideWeight="0.47449768" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16976744" sideWeight="0.47449768" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496124" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22058824" sideWeight="0.5255023" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22058824" sideWeight="0.5255023" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -575,20 +481,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tools/srcServer.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/login/LoginForm.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -628,13 +520,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/login/LoginPage.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -695,9 +580,8 @@
         <state relative-caret-position="304">
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <marker date="1524065413861" expanded="true" signature="2046:2258" ph="..." />
-            <marker date="1524065413861" expanded="true" signature="2068:2247" ph="..." />
+            <marker date="1524190223040" expanded="true" signature="2206:2418" ph="..." />
+            <marker date="1524190223040" expanded="true" signature="2228:2407" ph="..." />
           </folding>
         </state>
       </provider>
@@ -850,33 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/inbox/InboxPage.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="35" lean-forward="true" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="15" column="70" lean-forward="false" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/redux/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -906,29 +763,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/sent/SentPage.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="86" column="7" lean-forward="false" selection-start-line="86" selection-start-column="7" selection-end-line="86" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/view_email/ViewEmail.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <marker date="1524065413861" expanded="true" signature="2046:2258" ph="..." />
-            <marker date="1524065413861" expanded="true" signature="2068:2247" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/inbox/InboxPage.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="19">
           <caret line="23" column="86" lean-forward="false" selection-start-line="23" selection-start-column="86" selection-end-line="23" selection-end-column="86" />
           <folding />
         </state>
@@ -936,8 +773,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/sent/SentPage.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="23" column="86" lean-forward="false" selection-start-line="23" selection-start-column="86" selection-end-line="23" selection-end-column="86" />
+        <state relative-caret-position="114">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/login/LoginPage.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="81" column="10" lean-forward="false" selection-start-line="81" selection-start-column="10" selection-end-line="81" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/setAuthorizationDetails.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="7" column="71" lean-forward="false" selection-start-line="7" selection-start-column="71" selection-end-line="7" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/sent/SentPage.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/view_email/ViewEmail.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="20" column="17" lean-forward="true" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding>
+            <marker date="1524190223040" expanded="true" signature="2206:2418" ph="..." />
+            <marker date="1524190223040" expanded="true" signature="2228:2407" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/checkAuthorizationState.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/inbox/InboxPage.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="103" column="35" lean-forward="false" selection-start-line="103" selection-start-column="35" selection-end-line="103" selection-end-column="35" />
           <folding />
         </state>
       </provider>

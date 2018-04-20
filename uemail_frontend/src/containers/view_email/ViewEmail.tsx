@@ -8,6 +8,7 @@ import { ApplicationState, ConnectedReduxProps } from "../../store";
 import { ViewEmailState } from "../../store/view_email/types";
 import { updateCurrentPageEmail, updateViewEmailPageTypeAndEmailId } from "../../store/view_email/actions";
 import { connect } from 'react-redux';
+import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
 
 
 interface ViewEmailProps extends ConnectedReduxProps<ViewEmailState>, RouteComponentProps<{}> {
@@ -18,6 +19,10 @@ type allProps = ViewEmailProps & ViewEmailState;
 class ViewEmail extends React.Component<allProps> {
   constructor(props: allProps) {
     super(props);
+
+    if (!checkAuthorizationState()) {
+      this.props.history.push('/');
+    }
 
     this.delete = this.delete.bind(this);
     this.goBack = this.goBack.bind(this);

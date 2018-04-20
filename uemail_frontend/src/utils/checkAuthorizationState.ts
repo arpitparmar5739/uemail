@@ -1,5 +1,8 @@
 import { store } from "../index";
 
 export function checkAuthorizationState(): boolean {
-  return store.getState().auth.isAuthenticated;
+  if (!!localStorage.authToken) {
+    return store.getState().auth.isAuthenticated;
+  }
+  return false;
 }

@@ -10,6 +10,8 @@ import {
   updateCurrentPageEmails,
   updateTotalInboxEmails
 } from "../../store/inbox/actions";
+import { resetStore } from "../../store/auth/actions";
+import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
 
 interface InboxPageProps extends ConnectedReduxProps<InboxState>, RouteComponentProps<{}> {
 }
@@ -95,6 +97,12 @@ class InboxPage extends React.Component<allProps> {
     }).then(totalEmails => {
       this.props.dispatch(updateTotalInboxEmails(totalEmails));
     });
+  }
+
+  componentWillMount() {
+    if (!checkAuthorizationState()) {
+      this.props.history.push('/');
+    }
   }
 
   // Also used to refresh the page.

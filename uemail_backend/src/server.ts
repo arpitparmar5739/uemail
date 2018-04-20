@@ -10,6 +10,7 @@ import { loginRouter } from './routers/LoginRouter';
 import { signupRouter } from './routers/SignupRouter';
 import { userRouter } from "./routers/UserRouter";
 import { emailRouter } from './routers/EmailRouter';
+import verifyToken from "./middleware/verifyToken";
 
 class Server {
   private _app: Express;
@@ -58,7 +59,7 @@ class Server {
       res.json("Uemail server has started successfully");
     }));
 
-    this._app.use('/users', userRouter);
+    //this._app.use('/users', userRouter);
     this._app.use('/login', loginRouter);
     this._app.use('/signup', signupRouter);
     this._app.use('/email', emailRouter);

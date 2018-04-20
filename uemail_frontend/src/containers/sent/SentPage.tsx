@@ -10,6 +10,7 @@ import {
   updateCurrentPageEmails,
   updateTotalSentEmails
 } from "../../store/sent/actions";
+import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
 
 interface SentPageProps extends ConnectedReduxProps<SentState>, RouteComponentProps<{}> {
 }
@@ -19,6 +20,10 @@ type allProps = SentPageProps & SentState;
 class SentPage extends React.Component<allProps> {
   constructor(props: allProps) {
     super(props);
+
+    if (!checkAuthorizationState()) {
+      this.props.history.push('/');
+    }
 
     this.delete = this.delete.bind(this);
     this.viewEmail = this.viewEmail.bind(this);
