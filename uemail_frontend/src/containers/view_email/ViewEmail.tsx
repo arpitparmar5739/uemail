@@ -1,15 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps } from 'react-router';
 
 import { Email } from './types';
 import ViewEmailPage from '../../components/view_email/ViewEmail';
-import { ApplicationState, ConnectedReduxProps } from "../../store";
-import { ViewEmailState } from "../../store/view_email/types";
-import { updateCurrentPageEmail, updateViewEmailPageTypeAndEmailId } from "../../store/view_email/actions";
+import { ApplicationState, ConnectedReduxProps } from '../../store';
+import { ViewEmailState } from '../../store/view_email/types';
+import { updateCurrentPageEmail, updateViewEmailPageTypeAndEmailId } from '../../store/view_email/actions';
 import { connect } from 'react-redux';
-import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
-
+import { checkAuthorizationState } from '../../utils/checkAuthorizationState';
+import { BASE_URL } from '../../index';
 
 interface ViewEmailProps extends ConnectedReduxProps<ViewEmailState>, RouteComponentProps<{}> {
 }
@@ -28,22 +28,22 @@ class ViewEmail extends React.Component<allProps> {
     this.goBack = this.goBack.bind(this);
   }
 
-  getEmail(email_id: number, page_type: string): Promise<Email> {
+  getEmail(emailId: number, pageType: string): Promise<Email> {
     return axios.get(
-      `http://localhost:3000/email/get_email?email_id=${email_id}&type=${page_type}`
+      `${BASE_URL}email/get_email?email_id=${emailId}&type=${pageType}`
     ).then((res) => {
       return res.data;
     });
   }
 
   componentDidMount() {
-    const pathname = this.props.location.pathname.split("/");
-    const email_id = parseInt(pathname[pathname.length - 1]);
-    const page_type = (this.props.location.pathname.split("/")[pathname.length - 2]);
-    this.props.dispatch(updateViewEmailPageTypeAndEmailId(page_type, email_id));
+    const pathname = this.props.location.pathname.split('/');
+    const emailId = parseInt(pathname[pathname.length - 1], 10);
+    const pageType = (this.props.location.pathname.split('/')[pathname.length - 2]);
+    this.props.dispatch(updateViewEmailPageTypeAndEmailId(pageType, emailId));
 
-    if (email_id && page_type) {
-      this.getEmail(email_id, page_type).then((email) => {
+    if (emailId && pageType) {
+      this.getEmail(emailId, pageType).then((email) => {
         this.props.dispatch(updateCurrentPageEmail(email));
       });
     } else {
@@ -60,10 +60,10 @@ class ViewEmail extends React.Component<allProps> {
   }
 
   delete() {
-    axios.post(`http://localhost:3000/email/delete`, {
-        email_ids: [this.props.email_id],
-        page_type: this.props.page_type
-      })
+    axios.post(`${BASE_URL}email/delete`, {
+      email_ids: [this.props.email_id],
+      page_type: this.props.page_type
+    })
       .then(res => {
         if (!!res.data) {
           this.goBack();
@@ -72,15 +72,17 @@ class ViewEmail extends React.Component<allProps> {
   }
 
   render() {
-    return <div>
-      <ViewEmailPage
-        page_type={this.props.page_type}
-        email_id={this.props.email_id}
-        email={this.props.email}
-        goBack={this.goBack}
-        delete={this.delete}
-      />
-    </div>;
+    return (
+      <div>
+        <ViewEmailPage
+          page_type={this.props.page_type}
+          email_id={this.props.email_id}
+          email={this.props.email}
+          goBack={this.goBack}
+          delete={this.delete}
+        />
+      </div>
+    );
   }
 }
 

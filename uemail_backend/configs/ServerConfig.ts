@@ -1,7 +1,7 @@
 export interface ServerConfig {
-    port: number
+    port: number|string
 };
 
 export const serverConfig: ServerConfig = {
-    port: 3000
+    port: process.env.PORT || 3000
 };

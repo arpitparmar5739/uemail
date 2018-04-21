@@ -26,10 +26,16 @@ class Database {
 
   constructor() {
     this._basename = path.basename(module.filename);
-    let dbConfig = configs.getDatabaseConfig();
 
-    this._sequelize = new SequelizeStatic(dbConfig.database, dbConfig.username,
-      dbConfig.password, dbConfig);
+    if (!!process.env.DATABASE_URL) {
+      this._sequelize = new SequelizeStatic(process.env.DATABASE_URL);
+    } else {
+      let dbConfig = configs.getDatabaseConfig();
+
+      this._sequelize = new SequelizeStatic(dbConfig.database, dbConfig.username,
+        dbConfig.password, dbConfig);
+    }
+
     this._sequelize.authenticate().then(() => {
       console.log("Connection to the database is successful :)");
     }).catch((error: Error) => {

@@ -1,14 +1,14 @@
 import React from 'react';
 import '../../styles/inbox.css';
-import { InboxEmail, InboxState } from "../../store/inbox/types";
-import { setTime } from "../../utils/timeFormating";
+import { InboxEmail, InboxState } from '../../store/inbox/types';
+import { setTime } from '../../utils/timeFormating';
 
 interface InboxPageProps extends InboxState {
   changeCurrentPage(next: boolean): void;
 
   selectAll(): void;
 
-  viewEmail(email_id: number): void;
+  viewEmail(emailId: number): void;
 
   delete(): void;
 
@@ -17,14 +17,24 @@ interface InboxPageProps extends InboxState {
 
 function listItem(email: InboxEmail, viewEmail: Function): JSX.Element {
   return (
-    <tr className={email.isRead ? "" : "unread"} key={email.id} onClick={() => {
-      viewEmail(email.id)
-    }}>
-      <td className={"col-xs-4 col-sm-3"}>
-        <input type="checkbox" id={`${email.id}`} onClick={(e) => {e.stopPropagation()}} />
-        <span className={"sender-name"}>{email.senderName}</span>
+    <tr
+      className={email.isRead ? '' : 'unread'}
+      key={email.id}
+      onClick={() => {
+        viewEmail(email.id);
+      }}
+    >
+      <td className={'col-xs-4 col-sm-3'}>
+        <input
+          type="checkbox"
+          id={`${email.id}`}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        />
+        <span className={'sender-name'}>{email.senderName}</span>
       </td>
-      <td className={"col-xs-5 col-sm-7"}>{email.subject}</td>
+      <td className={'col-xs-5 col-sm-7'}>{email.subject}</td>
       <td className="text-right col-xs-3 col-sm-2">{setTime(email.time)}</td>
     </tr>
   );
@@ -47,33 +57,61 @@ const InboxPage: React.SFC<InboxPageProps> = (props: InboxPageProps) => {
           <div className="inbox-body">
             <div className="mail-option">
               <div className="chk-all">
-                <input type="checkbox" id={"selectAll"} className="mail-checkbox mail-group-checkbox"
-                       onClick={props.selectAll} /> All
+                <input
+                  type="checkbox"
+                  id={'selectAll'}
+                  className="mail-checkbox mail-group-checkbox"
+                  onClick={props.selectAll}
+                /> All
               </div>
               <div className="btn-group">
-                <a data-original-title="Refresh" data-placement="top" data-toggle="dropdown"
-                   className="btn tooltips" onClick={props.refreshCurrentPage}>
-                  Refresh <i className="fa fa-sync-alt" />
+                <a
+                  data-original-title="Refresh"
+                  data-placement="top"
+                  data-toggle="dropdown"
+                  className="btn tooltips"
+                  onClick={props.refreshCurrentPage}
+                >
+                  Refresh <i className="fa fa-sync-alt"/>
                 </a>
               </div>
               <div className="btn-group">
                 <a className="btn btn-default" onClick={props.delete}>
-                  Delete <i className="fa fa-trash" />
+                  Delete <i className="fa fa-trash"/>
                 </a>
               </div>
               <ul className="unstyled inbox-pagination">
                 <li>
-                  <span><b>{totalEmails && (currentPage * 50 - 49)} - {currentPage * 50 < totalEmails ? currentPage * 50 : totalEmails}</b> of <b>{props.totalEmails}</b></span>
+                  <span>
+                    <b>
+                      {totalEmails && (currentPage * 50 - 49)}
+                      -
+                      {currentPage * 50 < totalEmails ? currentPage * 50 : totalEmails}
+                    </b> of
+                    <b>
+                      {props.totalEmails}
+                    </b>
+                  </span>
                 </li>
                 <li>
-                  <a className="np-btn" onClick={() => {
-                    props.changeCurrentPage(false)
-                  }}><i className="fas fa-angle-left pagination-left" /></a>
+                  <a
+                    className="np-btn"
+                    onClick={() => {
+                      props.changeCurrentPage(false);
+                    }}
+                  >
+                    <i className="fas fa-angle-left pagination-left"/>
+                  </a>
                 </li>
                 <li>
-                  <a className="np-btn" onClick={() => {
-                    props.changeCurrentPage((true))
-                  }}><i className="fas fa-angle-right" /></a>
+                  <a
+                    className="np-btn"
+                    onClick={() => {
+                      props.changeCurrentPage((true));
+                    }}
+                  >
+                    <i className="fas fa-angle-right"/>
+                  </a>
                 </li>
               </ul>
             </div>

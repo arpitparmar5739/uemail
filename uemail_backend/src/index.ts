@@ -4,7 +4,7 @@ import { sequelize } from './models/index';
 
 sequelize.sync()
   .then(() => {
-    const port: number = configs.getServerConfig().port;
+    const port = configs.getServerConfig().port;
     server.start(port);
   })
   .catch((error: Error) => {

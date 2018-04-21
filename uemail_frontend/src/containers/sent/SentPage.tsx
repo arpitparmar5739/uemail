@@ -1,16 +1,17 @@
-import React from "react";
-import axios from "axios";
-import { connect } from "react-redux";
-import { RouteComponentProps } from "react-router";
-import { SentEmail, SentState } from "../../store/sent/types";
+import React from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
+import { SentEmail, SentState } from '../../store/sent/types';
 import SentPageForm from '../../components/sent/SentPage';
-import { ApplicationState, ConnectedReduxProps } from "../../store";
+import { ApplicationState, ConnectedReduxProps } from '../../store';
 import {
   updateCurrentPage,
   updateCurrentPageEmails,
   updateTotalSentEmails
-} from "../../store/sent/actions";
-import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
+} from '../../store/sent/actions';
+import { checkAuthorizationState } from '../../utils/checkAuthorizationState';
+import { BASE_URL } from '../../index';
 
 interface SentPageProps extends ConnectedReduxProps<SentState>, RouteComponentProps<{}> {
 }
@@ -38,8 +39,8 @@ class SentPage extends React.Component<allProps> {
     return !!select && (select as HTMLInputElement).checked;
   }
 
-  viewEmail(email_id: number): void {
-    this.props.history.push(`${this.props.location.pathname}/${email_id}`);
+  viewEmail(emailId: number): void {
+    this.props.history.push(`${this.props.location.pathname}/${emailId}`);
   }
 
   delete(): void {
@@ -52,7 +53,7 @@ class SentPage extends React.Component<allProps> {
         allDeleteEmailIds.push(email.id);
       }
     });
-    axios.post('http://localhost:3000/email/delete', {email_ids: allDeleteEmailIds})
+    axios.post(`${BASE_URL}email/delete`, {email_ids: allDeleteEmailIds, page_type: 'sent'})
       .then(res => {
         if (!!res.data) {
           this.componentDidMount();
@@ -78,7 +79,7 @@ class SentPage extends React.Component<allProps> {
   }
 
   getEmails(currentPage: number): Promise<SentEmail[]> {
-    return axios.get(`http://localhost:3000/email/get_emails?page=${currentPage}&type=sent`).then((res) => {
+    return axios.get(`${BASE_URL}email/get_emails?page=${currentPage}&type=sent`).then((res) => {
       let inboxEmails: SentEmail[] = [];
       res.data.forEach((email: any) => {
         inboxEmails.push({
@@ -93,7 +94,7 @@ class SentPage extends React.Component<allProps> {
   }
 
   setTotalEmails(): void {
-    axios.get('http://localhost:3000/email/totalEmails?type=sent').then(res => {
+    axios.get(`${BASE_URL}email/totalEmails?type=sent`).then(res => {
       return res.data.totalEmails;
     }).then(totalEmails => {
       this.props.dispatch(updateTotalSentEmails(totalEmails));
@@ -117,28 +118,30 @@ class SentPage extends React.Component<allProps> {
       this.props.dispatch(updateCurrentPage(this.props.currentPage + 1));
       this.getEmails(this.props.currentPage + 1).then(emails => {
         this.props.dispatch(updateCurrentPageEmails(emails));
-      })
+      });
     } else {
       this.props.dispatch(updateCurrentPage(this.props.currentPage - 1));
       this.getEmails(this.props.currentPage - 1).then(emails => {
         this.props.dispatch(updateCurrentPageEmails(emails));
-      })
+      });
     }
   }
 
   render() {
-    return <div>
-      <SentPageForm
-        changeCurrentPage={this.changeCurrentPage}
-        refreshCurrentPage={this.componentDidMount}
-        currentPage={this.props.currentPage}
-        totalEmails={this.props.totalEmails}
-        emails={this.props.emails}
-        selectAll={this.selectAll}
-        delete={this.delete}
-        viewEmail={this.viewEmail}
-      />
-    </div>;
+    return (
+      <div>
+        <SentPageForm
+          changeCurrentPage={this.changeCurrentPage}
+          refreshCurrentPage={this.componentDidMount}
+          currentPage={this.props.currentPage}
+          totalEmails={this.props.totalEmails}
+          emails={this.props.emails}
+          selectAll={this.selectAll}
+          delete={this.delete}
+          viewEmail={this.viewEmail}
+        />
+      </div>
+    );
   }
 }
 

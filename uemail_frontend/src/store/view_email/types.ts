@@ -1,5 +1,5 @@
-import { Action } from "redux";
-import { Email } from "../../containers/view_email/types";
+import { Action } from 'redux';
+import { Email } from '../../containers/view_email/types';
 
 export interface ViewEmailState {
   page_type: string | null;
@@ -12,7 +12,7 @@ export interface UpdateCurrentPageEmail extends Action {
   type: '@@view_email/UPDATE_CURRENT_PAGE_EMAIL';
   payload: {
     email: Email;
-  }
+  };
 }
 
 export interface UpdatePageTypeAndEmailId extends Action {
@@ -20,7 +20,7 @@ export interface UpdatePageTypeAndEmailId extends Action {
   payload: {
     page_type: string;
     email_id: number;
-  }
+  };
 }
 
 export type ViewEmailActions = (UpdateCurrentPageEmail | UpdatePageTypeAndEmailId);

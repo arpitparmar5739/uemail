@@ -9,18 +9,18 @@ import './styles/fontawesome/fontawesome-all.min.css';
 import Header from './components/shared/Header';
 import Routes from './routes';
 
-import { Store } from "redux";
-import { Provider } from "react-redux";
+import { Store } from 'redux';
+import { Provider } from 'react-redux';
 import { ApplicationState } from './store';
 import configureStore from './configureStore';
-import setAuthorizationDetails from "./utils/setAuthorizationDetails";
-import { initialLoginState } from "./store/login/reducer";
-import { initialSignupState } from "./store/signup/reducer";
-import { initialAuthState } from "./store/auth/reducer";
-import { initialSendState } from "./store/send/reducer";
-import { initialInboxState } from "./store/inbox/reducer";
-import { initialViewEmailState } from "./store/view_email/reducer";
-import { initialSentState } from "./store/sent/reducer";
+import setAuthorizationDetails from './utils/setAuthorizationDetails';
+import { initialLoginState } from './store/login/reducer';
+import { initialSignupState } from './store/signup/reducer';
+import { initialAuthState } from './store/auth/reducer';
+import { initialSendState } from './store/send/reducer';
+import { initialInboxState } from './store/inbox/reducer';
+import { initialViewEmailState } from './store/view_email/reducer';
+import { initialSentState } from './store/sent/reducer';
 
 export function initialState(): ApplicationState {
   return ({
@@ -34,6 +34,11 @@ export function initialState(): ApplicationState {
   });
 }
 
+export const BASE_URL =
+  process.env.NODE_ENV === 'production' ?
+    'https://uemail-backend.herokuapp.com/' :
+    'http://localhost:' + (process.env.PORT || '3000') + '/';
+
 export let store: Store<ApplicationState> = configureStore(initialState());
 setAuthorizationDetails(localStorage.authToken);
 
@@ -41,8 +46,8 @@ ReactDOM.render(
   <Router>
     <Provider store={store}>
       <div>
-        <Header />
-        <Routes />
+        <Header/>
+        <Routes/>
       </div>
     </Provider>
   </Router>,

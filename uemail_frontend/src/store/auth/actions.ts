@@ -1,6 +1,5 @@
-import { ActionCreator } from "react-redux";
-import { AuthUser, ResetStore, SetCurrentUser } from "./types";
-
+import { ActionCreator } from 'react-redux';
+import { AuthUser, ResetStore, SetCurrentUser } from './types';
 
 export const setCurrentUser: ActionCreator<SetCurrentUser> = (user: AuthUser) => ({
   type: '@@auth/SET_CURRENT_USER',

@@ -1,4 +1,4 @@
-import { Action } from "redux";
+import { Action } from 'redux';
 
 // Signup State Types
 export interface SignupState {
@@ -26,8 +26,8 @@ export interface SignupUser {
 }
 
 export interface SignupMessageState {
-  status: string,
-  value: string
+  status: string;
+  value: string;
 }
 
 // Signup Action Types
@@ -42,18 +42,18 @@ export interface UpdateSignupErrors extends Action {
   type: '@@signup/UPDATE_SIGNUP_ERRORS';
   payload: {
     errors: SignupErrorsState;
-  }
+  };
 }
 
 export interface UpdateSignupMessage extends Action {
   type: '@@signup/UPDATE_SIGNUP_MESSAGE';
   payload: {
     message: SignupMessageState;
-  }
+  };
 }
 
 export interface ResetSignupState extends Action {
-  type: '@@signup/RESET_SIGNUP_STATE'
+  type: '@@signup/RESET_SIGNUP_STATE';
 }
 
 export type SignupActions = (

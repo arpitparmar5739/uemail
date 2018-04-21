@@ -1,4 +1,4 @@
-import { ActionCreator } from "redux";
+import { ActionCreator } from 'redux';
 import {
   SignupUserState,
   SignupErrorsState,
@@ -29,7 +29,6 @@ export const updateSignupMessage: ActionCreator<UpdateSignupMessage> = (message:
     message
   },
 });
-
 
 export const resetSignupState: ActionCreator<ResetSignupState> = () => ({
   type: '@@signup/RESET_SIGNUP_STATE'

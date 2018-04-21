@@ -1,11 +1,11 @@
-import { Reducer } from "redux";
-import { LoginState, LoginActions, LoginUserState } from "./types";
+import { Reducer } from 'redux';
+import { LoginState, LoginActions, LoginUserState } from './types';
 
 function initUserState(): LoginUserState {
   return {
     username: '',
     password: ''
-  }
+  };
 }
 
 export function initialLoginState(): LoginState {

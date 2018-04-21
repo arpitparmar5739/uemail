@@ -1,4 +1,4 @@
-import { ActionCreator } from "redux";
+import { ActionCreator } from 'redux';
 import {
   LoginUserState,
   LoginErrorsState,
@@ -12,7 +12,7 @@ export const updateLoginUser: ActionCreator<UpdateLoginUser> = (user: LoginUserS
   type: '@@login/UPDATE_LOGIN_USER',
   payload: {
     user
-  },
+  }
 });
 
 export const updateLoginErrors: ActionCreator<UpdateLoginErrors> = (errors: LoginErrorsState) => ({
@@ -26,9 +26,8 @@ export const updateLoginMessage: ActionCreator<UpdateLoginMessage> = (message: L
   type: '@@login/UPDATE_LOGIN_MESSAGE',
   payload: {
     message
-  },
+  }
 });
-
 
 export const resetLoginState: ActionCreator<ResetLoginState> = () => ({
   type: '@@login/RESET_LOGIN_STATE'

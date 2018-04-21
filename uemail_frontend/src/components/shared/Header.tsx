@@ -2,11 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
-import { store } from "../../index";
-import setAuthorizationDetails from "../../utils/setAuthorizationDetails";
-import { RouteComponentProps, withRouter } from "react-router";
-import { updateLoginMessage } from "../../store/login/actions";
+import { checkAuthorizationState } from '../../utils/checkAuthorizationState';
+import { store } from '../../index';
+import setAuthorizationDetails from '../../utils/setAuthorizationDetails';
+import { RouteComponentProps, withRouter } from 'react-router';
+import { updateLoginMessage } from '../../store/login/actions';
 
 interface HeaderProps extends RouteComponentProps<{}> {
 }
@@ -29,12 +29,12 @@ class Header extends React.Component<HeaderProps> {
     return (
       <div>
         <header>
-          <Navbar inverse collapseOnSelect fixedTop>
+          <Navbar inverse={true} collapseOnSelect={true} fixedTop={true}>
             <Navbar.Header>
               <Navbar.Brand>
                 <NavLink to={'/'}>Uemail</NavLink>
               </Navbar.Brand>
-              <Navbar.Toggle />
+              <Navbar.Toggle/>
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav pullRight={true}>
@@ -60,12 +60,12 @@ class Header extends React.Component<HeaderProps> {
     return (
       <div>
         <header>
-          <Navbar inverse collapseOnSelect fixedTop>
+          <Navbar inverse={true} collapseOnSelect={true} fixedTop={true}>
             <Navbar.Header>
               <Navbar.Brand>
                 <NavLink to={'/'}>Uemail</NavLink>
               </Navbar.Brand>
-              <Navbar.Toggle />
+              <Navbar.Toggle/>
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav pullRight={true}>
@@ -85,8 +85,6 @@ class Header extends React.Component<HeaderProps> {
                   </NavItem>
                 </LinkContainer>
                 <NavDropdown title={store.getState().auth.user!.email} id="nav-dropdown">
-                  <MenuItem>Profile</MenuItem>
-                  <MenuItem divider />
                   <MenuItem onClick={this.logout}>Log Out</MenuItem>
                 </NavDropdown>
               </Nav>

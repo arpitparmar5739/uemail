@@ -1,4 +1,4 @@
-import { ActionCreator } from "redux";
+import { ActionCreator } from 'redux';
 import {
   SendEmailState,
   SendEmailErrorsState,
@@ -30,7 +30,6 @@ export const updateSendEmailMessage: ActionCreator<UpdateSendEmailMessage> = (me
     message
   },
 });
-
 
 export const resetSendEmailState: ActionCreator<ResetSendState> = () => ({
   type: '@@send/RESET_SEND_STATE'

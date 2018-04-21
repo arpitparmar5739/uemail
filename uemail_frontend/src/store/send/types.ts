@@ -1,4 +1,4 @@
-import { Action } from "redux";
+import { Action } from 'redux';
 
 // Send State Types
 export interface SendState {
@@ -24,8 +24,8 @@ export interface Email {
 }
 
 export interface SendEmailMessageState {
-  status: string,
-  value: string
+  status: string;
+  value: string;
 }
 
 // Send Action Types
@@ -40,18 +40,18 @@ export interface UpdateSendEmailErrors extends Action {
   type: '@@send/UPDATE_SEND_EMAIL_ERRORS';
   payload: {
     errors: SendEmailErrorsState;
-  }
+  };
 }
 
 export interface UpdateSendEmailMessage extends Action {
   type: '@@send/UPDATE_SEND_EMAIL_MESSAGE';
   payload: {
     message: SendEmailMessageState;
-  }
+  };
 }
 
 export interface ResetSendState extends Action {
-  type: '@@send/RESET_SEND_STATE'
+  type: '@@send/RESET_SEND_STATE';
 }
 
 export type SendEmailActions = (

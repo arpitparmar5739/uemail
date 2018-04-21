@@ -1,5 +1,5 @@
-import { Reducer } from "redux";
-import { SendState, SendEmailActions, SendEmailState } from "./types";
+import { Reducer } from 'redux';
+import { SendState, SendEmailActions, SendEmailState } from './types';
 
 function initSendEmailState(): SendEmailState {
   return {

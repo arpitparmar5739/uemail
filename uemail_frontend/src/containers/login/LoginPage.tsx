@@ -1,16 +1,17 @@
 import React, { FormEvent } from 'react';
-import { connect } from "react-redux";
-import { FormControl } from "react-bootstrap";
-import { LoginState } from "../../store/login/types";
+import { connect } from 'react-redux';
+import { FormControl } from 'react-bootstrap';
+import { LoginState } from '../../store/login/types';
 import LoginForm from '../../components/login/LoginForm';
-import { ApplicationState, ConnectedReduxProps } from "../../store";
-import { formValidationState } from "../../types";
-import { updateLoginUser, updateLoginMessage, resetLoginState } from "../../store/login/actions";
-import { isArray } from "util";
+import { ApplicationState, ConnectedReduxProps } from '../../store';
+import { formValidationState } from '../../types';
+import { updateLoginUser, updateLoginMessage, resetLoginState } from '../../store/login/actions';
+import { isArray } from 'util';
 import axios, { AxiosResponse } from 'axios';
-import { RouteComponentProps } from "react-router";
-import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
-import setAuthorizationDetails from "../../utils/setAuthorizationDetails";
+import { RouteComponentProps } from 'react-router';
+import { checkAuthorizationState } from '../../utils/checkAuthorizationState';
+import setAuthorizationDetails from '../../utils/setAuthorizationDetails';
+import { BASE_URL } from '../../index';
 
 interface LoginProps extends ConnectedReduxProps<LoginState>, RouteComponentProps<{}> {
 }
@@ -24,7 +25,7 @@ class LoginPage extends React.Component<allProps> {
     this.submit = this.submit.bind(this);
     this.validateForm = this.validateForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.getValidationState = this.getValidationState.bind(this)
+    this.getValidationState = this.getValidationState.bind(this);
   }
 
   setMessageState(status: string, value: string) {
@@ -39,7 +40,8 @@ class LoginPage extends React.Component<allProps> {
     this.setMessageState('', '');
     let field = (e.target as HTMLInputElement).name;
     this.props.user[field] = (e.target as HTMLInputElement).value;
-    //this.props.dispatch(updateLoginUser(this.props.user));
+    // TODO: Why this line below doest not work find that out!
+    // this.props.dispatch(updateLoginUser(this.props.user));
   }
 
   getValidationState(field: string): formValidationState {
@@ -75,7 +77,11 @@ class LoginPage extends React.Component<allProps> {
 
   submit() {
     if (this.validateForm()) {
-      axios.post('http://localhost:3000/login', this.props.user)
+      this.setMessageState(
+        'success',
+        'Please wait logging in...'
+      );
+      axios.post(`${BASE_URL}login`, this.props.user)
         .then((res: AxiosResponse<{ user: Object, message: { token: string } }>) => {
           const token: string = res.data.message.token;
           this.resetForm();
@@ -86,7 +92,7 @@ class LoginPage extends React.Component<allProps> {
             'success',
             'Login is successful. Redirecting to the inbox page...'
           );
-          setTimeout(this.setMessageState('',''), 3000);
+          setTimeout(this.setMessageState('', ''), 3000);
         })
         .catch((error) => {
           let err: string;

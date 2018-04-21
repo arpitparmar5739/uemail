@@ -8,19 +8,18 @@ export function formatAMPM(date: Date): string {
   return hours + ':' + minutes + ' ' + ampm;
 }
 
-
 export function setTime(time: string): string {
   const currentDate = new Date();
   const date = new Date(time);
-  const outputDate = date.toDateString().split(" ");
+  const outputDate = date.toDateString().split(' ');
   if (date.getFullYear() === currentDate.getFullYear()) {
     if (date.getDate() === currentDate.getDate()) {
       time = formatAMPM(date);
     } else {
-      time = outputDate[1] + " " + outputDate[2];
+      time = outputDate[1] + ' ' + outputDate[2];
     }
   } else {
-    time = outputDate[1] + " " + outputDate[2] + " " + outputDate[3];
+    time = outputDate[1] + ' ' + outputDate[2] + ' ' + outputDate[3];
   }
   return time;
 }

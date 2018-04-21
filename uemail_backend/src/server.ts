@@ -45,7 +45,7 @@ class Server {
     this._server = http.createServer(this._app);
   }
 
-  start(port: number): void {
+  start(port: number|string): void {
     this._server.listen(port);
     this._server.on("error", error => this._onError(error));
     this._server.on("listening", () => this._onListening());

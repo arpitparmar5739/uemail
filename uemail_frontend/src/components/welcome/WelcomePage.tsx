@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button } from "react-bootstrap";
-import { RouteComponentProps } from "react-router";
-import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
+import { Button } from 'react-bootstrap';
+import { RouteComponentProps } from 'react-router';
+import { checkAuthorizationState } from '../../utils/checkAuthorizationState';
 
 interface WelcomePageProps extends RouteComponentProps<{}> {
 }
@@ -13,16 +13,16 @@ const WelcomePage: React.SFC<WelcomePageProps> = (props: WelcomePageProps) => {
   }
 
   return (
-    <div className={"jumbotron text-center"}>
+    <div className={'jumbotron text-center'}>
       <h1>Welcome to Uemail</h1>
-      <hr />
+      <hr/>
       <div>
-        <NavLink to={"/signup"}>
-          <Button bsStyle={"primary"}>Sign Up</Button>
+        <NavLink to={'/signup'}>
+          <Button bsStyle={'primary'}>Sign Up</Button>
         </NavLink>
 
-        <NavLink to={"/login"} className={"col-sm-offset-1"}>
-          <Button bsStyle={"primary"}>Login</Button>
+        <NavLink to={'/login'} className={'col-xs-offset-1'}>
+          <Button bsStyle={'primary'}>Login</Button>
         </NavLink>
       </div>
     </div>

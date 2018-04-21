@@ -1,6 +1,6 @@
-import { Reducer } from "redux";
-import { SentActions } from "./types";
-import { SentState } from "./types";
+import { Reducer } from 'redux';
+import { SentActions } from './types';
+import { SentState } from './types';
 
 export function initialSentState(): SentState {
   return {

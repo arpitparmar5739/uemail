@@ -1,15 +1,16 @@
 import axios from 'axios';
-import { isArray } from "util";
-import { connect } from "react-redux";
+import { isArray } from 'util';
+import { connect } from 'react-redux';
 import React, { FormEvent } from 'react';
-import { FormControl } from "react-bootstrap";
-import { formValidationState } from "../../types";
-import { SignupState } from "../../store/signup/types";
+import { FormControl } from 'react-bootstrap';
+import { formValidationState } from '../../types';
+import { SignupState } from '../../store/signup/types';
 import SignupForm from '../../components/signup/SingupForm';
-import { ApplicationState, ConnectedReduxProps } from "../../store";
-import { resetSignupState, updateSignupMessage, updateSignupUser } from "../../store/signup/actions";
-import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
-import { RouteComponentProps } from "react-router";
+import { ApplicationState, ConnectedReduxProps } from '../../store';
+import { resetSignupState, updateSignupMessage, updateSignupUser } from '../../store/signup/actions';
+import { checkAuthorizationState } from '../../utils/checkAuthorizationState';
+import { RouteComponentProps } from 'react-router';
+import { BASE_URL } from '../../index';
 
 interface SignupProps extends ConnectedReduxProps<SignupState>, RouteComponentProps<{}> {
 }
@@ -23,7 +24,7 @@ class SignupPage extends React.Component<allProps> {
     this.submit = this.submit.bind(this);
     this.validateForm = this.validateForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.getValidationState = this.getValidationState.bind(this)
+    this.getValidationState = this.getValidationState.bind(this);
   }
 
   setMessageState(status: string, value: string) {
@@ -119,7 +120,7 @@ class SignupPage extends React.Component<allProps> {
   // Todo: Handle this properly.
   submit() {
     if (this.validateForm()) {
-      axios.post('http://localhost:3000/signup', this.props.user)
+      axios.post(`${BASE_URL}signup`, this.props.user)
         .then(() => {
           const username: string = this.props.user.username;
           this.resetForm();

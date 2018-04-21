@@ -1,6 +1,6 @@
-import { Reducer } from "redux";
+import { Reducer } from 'redux';
 import { isEmpty } from 'lodash';
-import { AuthActions, AuthState } from "./types";
+import { AuthActions, AuthState } from './types';
 
 export function initialAuthState(): AuthState {
   return {
@@ -12,13 +12,14 @@ export function initialAuthState(): AuthState {
       lastname: '',
       iat: 0
     }
-  }
+  };
 }
 
 const reducer: Reducer<AuthState> = (state: AuthState = initialAuthState(), action) => {
-  switch((action as AuthActions).type) {
+  switch ((action as AuthActions).type) {
     case '@@auth/SET_CURRENT_USER':
-      return {...state,
+      return {
+        ...state,
         isAuthenticated: !isEmpty(action.payload.user),
         user: action.payload.user
       };

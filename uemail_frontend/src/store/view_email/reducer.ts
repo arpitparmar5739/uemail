@@ -1,5 +1,5 @@
-import { Reducer } from "redux";
-import { ViewEmailActions, ViewEmailState } from "./types";
+import { Reducer } from 'redux';
+import { ViewEmailActions, ViewEmailState } from './types';
 
 export function initialViewEmailState(): ViewEmailState {
   return {

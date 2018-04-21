@@ -1,35 +1,35 @@
-import { combineReducers, Dispatch, Reducer } from "redux";
+import { combineReducers, Dispatch, Reducer } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
 import { LoginState } from './login/types';
 import loginReducer from './login/reducer';
 
-import { SignupState} from "./signup/types";
-import signupReducer from "./signup/reducer";
+import { SignupState } from './signup/types';
+import signupReducer from './signup/reducer';
 
-import { AuthActions, AuthState } from "./auth/types";
-import authReducer from "./auth/reducer";
+import { AuthActions, AuthState } from './auth/types';
+import authReducer from './auth/reducer';
 
-import { SendState } from "./send/types";
+import { SendState } from './send/types';
 import sendReducer from './send/reducer';
 
-import { InboxState } from "./inbox/types";
+import { InboxState } from './inbox/types';
 import inboxReducer from './inbox/reducer';
 
-import { ViewEmailState } from "./view_email/types";
+import { ViewEmailState } from './view_email/types';
 import viewEmailReducer from './view_email/reducer';
 
-import { SentState } from "./sent/types";
+import { SentState } from './sent/types';
 import sentReducer from './sent/reducer';
 
 export interface ApplicationState {
-  login: LoginState,
-  signup: SignupState,
-  auth: AuthState,
-  send: SendState,
-  inbox: InboxState,
-  sent: SentState,
-  view_email: ViewEmailState
+  login: LoginState;
+  signup: SignupState;
+  auth: AuthState;
+  send: SendState;
+  inbox: InboxState;
+  sent: SentState;
+  view_email: ViewEmailState;
 }
 
 const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({

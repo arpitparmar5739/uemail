@@ -1,16 +1,17 @@
 import React, { FormEvent } from 'react';
-import { connect } from "react-redux";
-import { FormControl } from "react-bootstrap";
-import { LoginState } from "../../store/login/types";
+import { connect } from 'react-redux';
+import { FormControl } from 'react-bootstrap';
+import { LoginState } from '../../store/login/types';
 import SendEmailPageComponent from '../../components/send/SendEmailPage';
-import { ApplicationState, ConnectedReduxProps } from "../../store";
-import { formValidationState } from "../../types";
-import { isArray } from "util";
+import { ApplicationState, ConnectedReduxProps } from '../../store';
+import { formValidationState } from '../../types';
+import { isArray } from 'util';
 import axios, { AxiosResponse } from 'axios';
-import { RouteComponentProps } from "react-router";
-import { checkAuthorizationState } from "../../utils/checkAuthorizationState";
-import { SendState } from "../../store/send/types";
-import { resetSendEmailState, updateSendEmailMessage } from "../../store/send/actions";
+import { RouteComponentProps } from 'react-router';
+import { checkAuthorizationState } from '../../utils/checkAuthorizationState';
+import { SendState } from '../../store/send/types';
+import { resetSendEmailState, updateSendEmailMessage } from '../../store/send/actions';
+import { BASE_URL } from '../../index';
 
 interface SendEmailProps extends ConnectedReduxProps<LoginState>, RouteComponentProps<{}> {
 }
@@ -18,17 +19,17 @@ interface SendEmailProps extends ConnectedReduxProps<LoginState>, RouteComponent
 type allProps = SendEmailProps & SendState;
 
 class SendEmailPage extends React.Component<allProps> {
+  static validateEmailId(emailId: string): boolean {
+    return (/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(emailId);
+  }
+
   constructor(props: allProps) {
     super(props);
 
     this.submit = this.submit.bind(this);
     this.validateForm = this.validateForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.getValidationState = this.getValidationState.bind(this)
-  }
-
-  static validateEmailId(email_id: string): boolean {
-    return (/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(email_id);
+    this.getValidationState = this.getValidationState.bind(this);
   }
 
   setMessageState(status: string, value: string, clearTime?: number) {
@@ -65,7 +66,7 @@ class SendEmailPage extends React.Component<allProps> {
       case 'to':
       case 'cc':
       case 'bcc':
-        for (const email of (this.props.email[field]).replace(/\s/g, '').split(",")) {
+        for (const email of (this.props.email[field]).replace(/\s/g, '').split(',')) {
           if (!SendEmailPage.validateEmailId(email)) {
             this.props.errors[field] = `${email} is not a valid email.`;
             return 'error';
@@ -88,8 +89,9 @@ class SendEmailPage extends React.Component<allProps> {
         }
         this.props.errors.body = '';
         return 'success';
+      default:
+        return 'error';
     }
-    return 'success';
   }
 
   validateForm(): boolean {
@@ -100,8 +102,8 @@ class SendEmailPage extends React.Component<allProps> {
     }
 
     return !(
-      this.props.email['to'].length === 0 ||
-      (this.props.email['subject'].length === 0 && this.props.email['body'].length === 0)
+      this.props.email.to.length === 0 ||
+      (this.props.email.subject.length === 0 && this.props.email.body.length === 0)
     );
   }
 
@@ -111,7 +113,8 @@ class SendEmailPage extends React.Component<allProps> {
 
   submit() {
     if (this.validateForm()) {
-      axios.post('http://localhost:3000/email/send', this.props.email)
+      this.setMessageState('success', 'Please wait sending your email...');
+      axios.post(`${BASE_URL}email/send`, this.props.email)
         .then((res: AxiosResponse<{ status: string, message: string }>) => {
           this.resetForm();
           this.setMessageState('success', res.data.message);
@@ -137,7 +140,7 @@ class SendEmailPage extends React.Component<allProps> {
           }
         });
     } else {
-      if (this.props.email['subject'].length === 0 && this.props.email['body'].length === 0) {
+      if (this.props.email.subject.length === 0 && this.props.email.body.length === 0) {
         this.setMessageState('error', 'Can not send empty email.');
       } else {
         this.setMessageState('error', 'Please compose email properly.');

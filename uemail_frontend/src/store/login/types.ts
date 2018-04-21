@@ -1,4 +1,4 @@
-import { Action } from "redux";
+import { Action } from 'redux';
 
 // Login State Types
 export interface LoginState {
@@ -21,8 +21,8 @@ export interface LoginUser {
 }
 
 export interface LoginMessageState {
-  status: string,
-  value: string
+  status: string;
+  value: string;
 }
 
 // Login Action Types
@@ -37,18 +37,18 @@ export interface UpdateLoginErrors extends Action {
   type: '@@login/UPDATE_LOGIN_ERRORS';
   payload: {
     errors: LoginErrorsState;
-  }
+  };
 }
 
 export interface UpdateLoginMessage extends Action {
   type: '@@login/UPDATE_LOGIN_MESSAGE';
   payload: {
     message: LoginMessageState;
-  }
+  };
 }
 
 export interface ResetLoginState extends Action {
-  type: '@@login/RESET_LOGIN_STATE'
+  type: '@@login/RESET_LOGIN_STATE';
 }
 
 export type LoginActions = (

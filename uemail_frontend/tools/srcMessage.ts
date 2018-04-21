@@ -1,1 +1,1 @@
-console.log("Starting you application :)");
+console.log('Starting you application :)');

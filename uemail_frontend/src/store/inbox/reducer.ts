@@ -1,6 +1,6 @@
-import { Reducer } from "redux";
-import { InboxActions } from "./types";
-import { InboxState } from "./types";
+import { Reducer } from 'redux';
+import { InboxActions } from './types';
+import { InboxState } from './types';
 
 export function initialInboxState(): InboxState {
   return {

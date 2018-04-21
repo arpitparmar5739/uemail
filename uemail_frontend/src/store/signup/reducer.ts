@@ -1,5 +1,5 @@
-import { Reducer } from "redux";
-import { SignupState, SignupActions, SignupUser } from "./types";
+import { Reducer } from 'redux';
+import { SignupState, SignupActions, SignupUser } from './types';
 
 function initUserState(): SignupUser {
   return {
@@ -10,7 +10,7 @@ function initUserState(): SignupUser {
     firstname: '',
     lastname: '',
     phone: ''
-  }
+  };
 }
 
 export function initialSignupState(): SignupState {
@@ -21,7 +21,7 @@ export function initialSignupState(): SignupState {
       status: '',
       value: ''
     }
-  }
+  };
 }
 
 const reducer: Reducer<SignupState> = (state: SignupState = initialSignupState(), action) => {
