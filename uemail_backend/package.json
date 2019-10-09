@@ -27,7 +27,7 @@
     "express": "^4.16.2",
     "express-validator": "^5.0.3",
     "jsonwebtoken": "^8.2.1",
-    "morgan": "^1.9.0",
+    "morgan": "^1.9.1",
     "mysql2": "^1.5.1",
     "nodemon": "^1.17.3",
     "npm-run-all": "^4.1.2",
