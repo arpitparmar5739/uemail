@@ -31,7 +31,7 @@
     "mysql2": "^1.5.1",
     "nodemon": "^1.17.3",
     "npm-run-all": "^4.1.2",
-    "sequelize": "^4.32.6",
+    "sequelize": "^5.15.1",
     "ts-node": "^6.0.0",
     "typescript": "^2.8.1"
   },
