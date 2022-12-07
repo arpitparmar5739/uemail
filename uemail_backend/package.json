@@ -24,7 +24,7 @@
     "@types/sequelize": "^4.27.4",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "express-validator": "^5.0.3",
     "jsonwebtoken": "^8.2.1",
     "morgan": "^1.9.0",
